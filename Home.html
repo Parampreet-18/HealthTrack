@@ -33,6 +33,14 @@
       --border-radius: 12px;
       --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
       --transition: all 0.3s ease;
+      
+      /* New theme colors */
+      --sleep-theme: #4b0082;
+      --sleep-theme-light: #6a0dad;
+      --mental-theme: #1a2a6c;
+      --mental-theme-light: #2a4a9c;
+      --nutrition-theme: #d35400;
+      --nutrition-theme-light: #e67e22;
     }
 
     body {
@@ -41,6 +49,7 @@
       line-height: 1.6;
       min-height: 100vh;
       padding-bottom: 2rem;
+      scroll-behavior: smooth;
     }
 
     /* Header Styles */
@@ -861,6 +870,322 @@
     .auth-footer a:hover {
       text-decoration: underline;
     }
+    
+    /* NEW FEATURES */
+    
+    /* Sleep Tracking Section */
+    .sleep-section {
+      background: linear-gradient(135deg, var(--sleep-theme), var(--sleep-theme-light));
+      border-radius: var(--border-radius);
+      padding: 3rem;
+      margin-bottom: 5rem;
+      box-shadow: var(--box-shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .sleep-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('https://images.unsplash.com/photo-1511882150382-421056c89033?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
+      opacity: 0.15;
+    }
+    
+    .sleep-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .sleep-header {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    
+    .sleep-header h2 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: white;
+    }
+    
+    .sleep-header p {
+      color: rgba(255,255,255,0.8);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .sleep-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .sleep-feature {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      text-align: center;
+      transition: var(--transition);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .sleep-feature:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .sleep-feature i {
+      font-size: 3rem;
+      color: white;
+      margin-bottom: 1rem;
+    }
+    
+    .sleep-feature h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+    
+    .sleep-feature p {
+      color: rgba(255,255,255,0.8);
+    }
+    
+    .sleep-section .btn {
+      align-self: center;
+      background: white;
+      color: var(--sleep-theme);
+      font-weight: 600;
+    }
+    
+    .sleep-section .btn:hover {
+      background: rgba(255,255,255,0.9);
+    }
+    
+    /* Mental Wellness Section */
+    .mental-section {
+      background: linear-gradient(135deg, var(--mental-theme), var(--mental-theme-light));
+      border-radius: var(--border-radius);
+      padding: 3rem;
+      margin-bottom: 5rem;
+      box-shadow: var(--box-shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .mental-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
+      opacity: 0.15;
+    }
+    
+    .mental-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    
+    .mental-text h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+    
+    .mental-text p {
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+    
+    .mental-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    
+    .mental-stat {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      text-align: center;
+    }
+    
+    .mental-stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: white;
+    }
+    
+    .mental-stat-label {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.8);
+    }
+    
+    .mental-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .mental-image-container {
+      width: 100%;
+      max-width: 400px;
+      height: 300px;
+      border-radius: var(--border-radius);
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(5px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .mental-image-container i {
+      font-size: 4rem;
+      color: white;
+      margin-bottom: 1.5rem;
+    }
+    
+    .mental-image-container h3 {
+      font-size: 1.8rem;
+      color: white;
+      margin-bottom: 1rem;
+    }
+    
+    /* Nutrition Tracking Section */
+    .nutrition-section {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      margin-bottom: 5rem;
+      background: var(--dark-gray);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+      border: 2px solid var(--nutrition-theme);
+    }
+    
+    .nutrition-content {
+      flex: 1;
+      padding: 3rem;
+    }
+    
+    .nutrition-image {
+      flex: 1;
+      background: linear-gradient(45deg, var(--nutrition-theme), var(--nutrition-theme-light));
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .nutrition-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
+      opacity: 0.5;
+    }
+    
+    .nutrition-content h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-light);
+    }
+    
+    .nutrition-content h2 i {
+      color: var(--nutrition-theme);
+    }
+    
+    .nutrition-content p {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+    
+    .nutrition-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .nutrition-feature {
+      background: var(--medium-gray);
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      transition: var(--transition);
+      border: 1px solid var(--nutrition-theme);
+    }
+    
+    .nutrition-feature:hover {
+      transform: translateY(-5px);
+      background: rgba(211, 84, 0, 0.1);
+    }
+    
+    .nutrition-feature i {
+      font-size: 2rem;
+      color: var(--nutrition-theme);
+      margin-bottom: 1rem;
+    }
+    
+    .nutrition-feature h4 {
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+      color: var(--text-light);
+    }
+    
+    .nutrition-feature p {
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+    
+    /* Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .feature-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    
+    .feature-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
@@ -874,11 +1199,11 @@
       
       <ul class="nav-links">
         <li><a href="#" class="active">Dashboard</a></li>
-        <li><a href="#">AI Analysis</a></li>
-        <li><a href="#">Nutrition</a></li>
-        <li><a href="#">Workouts</a></li>
-        <li><a href="#">Progress</a></li>
-        <li><a href="#">Subscription</a></li>
+        <li><a href="#ai-analysis">AI Analysis</a></li>
+        <li><a href="#nutrition">Nutrition</a></li>
+        <li><a href="#sleep">Sleep</a></li>
+        <li><a href="#mental">Mental</a></li>
+        <li><a href="#subscription">Subscription</a></li>
       </ul>
       
       <div class="user-actions">
@@ -913,7 +1238,7 @@
   </section>
 
   <!-- AI Body Analysis Section -->
-  <div class="container">
+  <div id="ai-analysis" class="container feature-section">
     <div class="section-title">
       <i class="fas fa-robot"></i>
       AI Body Analysis
@@ -970,8 +1295,143 @@
     </div>
   </div>
 
+  <!-- Nutrition Tracking Section -->
+  <div id="nutrition" class="container feature-section">
+    <div class="section-title">
+      <i class="fas fa-utensils"></i>
+      Nutrition Tracking
+    </div>
+    <p class="section-subtitle">Track your meals, analyze nutrition, and get personalized dietary recommendations</p>
+    
+    <div class="nutrition-section">
+      <div class="nutrition-content">
+        <h2><i class="fas fa-apple-alt"></i> Smart Nutrition Analysis</h2>
+        <p>Our AI-powered nutrition tracker helps you make better food choices by analyzing your meals, providing macro breakdowns, and suggesting improvements based on your health goals.</p>
+        
+        <div class="nutrition-features">
+          <div class="nutrition-feature">
+            <i class="fas fa-barcode"></i>
+            <h4>Barcode Scanning</h4>
+            <p>Scan food items to instantly log nutrition information</p>
+          </div>
+          
+          <div class="nutrition-feature">
+            <i class="fas fa-chart-pie"></i>
+            <h4>Macro Tracking</h4>
+            <p>Monitor carbs, protein, and fat intake with visual charts</p>
+          </div>
+          
+          <div class="nutrition-feature">
+            <i class="fas fa-lightbulb"></i>
+            <h4>AI Suggestions</h4>
+            <p>Get personalized meal recommendations based on your goals</p>
+          </div>
+          
+          <div class="nutrition-feature">
+            <i class="fas fa-glass-whiskey"></i>
+            <h4>Hydration Tracker</h4>
+            <p>Monitor your water intake throughout the day</p>
+          </div>
+        </div>
+        
+        <button class="btn btn-accent" style="margin-top: 2rem; background: var(--nutrition-theme);">
+          <i class="fas fa-utensils"></i> Start Food Diary
+        </button>
+      </div>
+      
+      <div class="nutrition-image">
+        <div style="position: relative; z-index: 2; text-align: center; padding: 2rem; color: white;">
+          <h3 style="font-size: 2rem; margin-bottom: 1rem;">Nutrition Dashboard</h3>
+          <p style="margin-bottom: 2rem; max-width: 400px;">Visualize your daily nutrition and get AI-powered insights</p>
+          <div style="display: flex; justify-content: center; margin-bottom: 1.5rem;">
+            <div style="width: 150px; height: 150px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold;">
+              82% Score
+            </div>
+          </div>
+          <p>Your nutrition quality this week</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sleep Tracking Section -->
+  <div id="sleep" class="container feature-section">
+    <div class="sleep-section">
+      <div class="sleep-content">
+        <div class="sleep-header">
+          <h2><i class="fas fa-moon"></i> Advanced Sleep Analysis</h2>
+          <p>Understand your sleep patterns and get personalized recommendations for better rest and recovery</p>
+        </div>
+        
+        <div class="sleep-features">
+          <div class="sleep-feature">
+            <i class="fas fa-bed"></i>
+            <h3>Sleep Duration Tracking</h3>
+            <p>Monitor how long you sleep each night with precision timing</p>
+          </div>
+          
+          <div class="sleep-feature">
+            <i class="fas fa-brain"></i>
+            <h3>Sleep Quality Analysis</h3>
+            <p>Measure sleep stages and quality using AI algorithms</p>
+          </div>
+          
+          <div class="sleep-feature">
+            <i class="fas fa-cloud-moon"></i>
+            <h3>Smart Wake-up</h3>
+            <p>Wake up at the optimal time in your sleep cycle</p>
+          </div>
+        </div>
+        
+        <button class="btn">
+          <i class="fas fa-chart-line"></i> View Sleep Reports
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mental Wellness Section -->
+  <div id="mental" class="container feature-section">
+    <div class="mental-section">
+      <div class="mental-content">
+        <div class="mental-text">
+          <h2><i class="fas fa-brain"></i> Mental Wellness & Mindfulness</h2>
+          <p>Track your mental health, practice mindfulness, and receive AI-powered recommendations to improve your emotional well-being. Our system analyzes mood patterns, stress levels, and provides guided meditation sessions tailored to your needs.</p>
+          <p>With daily check-ins and mood tracking, our AI identifies patterns and offers personalized strategies to enhance your mental resilience and emotional balance.</p>
+          
+          <div class="mental-stats">
+            <div class="mental-stat">
+              <div class="mental-stat-value">87%</div>
+              <div class="mental-stat-label">Stress Reduction</div>
+            </div>
+            <div class="mental-stat">
+              <div class="mental-stat-value">5.2x</div>
+              <div class="mental-stat-label">Mindfulness Increase</div>
+            </div>
+            <div class="mental-stat">
+              <div class="mental-stat-value">42%</div>
+              <div class="mental-stat-label">Faster Recovery</div>
+            </div>
+            <div class="mental-stat">
+              <div class="mental-stat-value">94%</div>
+              <div class="mental-stat-label">User Satisfaction</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mental-image">
+          <div class="mental-image-container">
+            <i class="fas fa-head-side-brain"></i>
+            <h3>Daily Mood Tracker</h3>
+            <p>Log your emotions and track patterns over time</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Subscription Plans Section -->
-  <div class="container">
+  <div id="subscription" class="container feature-section">
     <div class="pricing-section">
       <div class="section-title">
         <i class="fas fa-crown"></i>
@@ -1003,6 +1463,7 @@
             <li><i class="fas fa-check"></i> Mobile App Premium</li>
             <li><i class="fas fa-check"></i> All Health Metrics</li>
             <li><i class="fas fa-check"></i> Personal Trainer Access</li>
+            <li><i class="fas fa-check"></i> Nutrition & Sleep Tracking</li>
           </ul>
           <button class="btn">Get Started</button>
         </div>
@@ -1016,6 +1477,7 @@
             <li><i class="fas fa-check"></i> Multi-User Access</li>
             <li><i class="fas fa-check"></i> Dedicated Support</li>
             <li><i class="fas fa-check"></i> Custom Integrations</li>
+            <li><i class="fas fa-check"></i> Mental Wellness Tools</li>
           </ul>
           <button class="btn">Get Started</button>
         </div>
@@ -1024,7 +1486,7 @@
   </div>
 
   <!-- Mobile App Section -->
-  <div class="container">
+  <div class="container feature-section">
     <div class="section-title">
       <i class="fas fa-mobile-alt"></i>
       Mobile Application
@@ -1207,8 +1669,8 @@
         <ul>
           <li><a href="#">AI Body Analysis</a></li>
           <li><a href="#">Nutrition Tracking</a></li>
-          <li><a href="#">Workout Plans</a></li>
-          <li><a href="#">Health Metrics</a></li>
+          <li><a href="#">Sleep Analysis</a></li>
+          <li><a href="#">Mental Wellness</a></li>
           <li><a href="#">Mobile App</a></li>
         </ul>
       </div>
@@ -1266,18 +1728,33 @@
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            const statCards = document.querySelectorAll('.stat-card');
-            statCards.forEach((card, index) => {
-              setTimeout(() => {
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-              }, index * 200);
-            });
+            entry.target.classList.add('visible');
           }
         });
       }, { threshold: 0.1 });
       
-      observer.observe(document.querySelector('.hero'));
+      // Observe all feature sections
+      document.querySelectorAll('.feature-section').forEach(section => {
+        observer.observe(section);
+      });
+      
+      // Navigation smooth scrolling
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if(targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if(targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 100,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
     });
   </script>
 </body>
