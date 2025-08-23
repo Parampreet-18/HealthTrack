@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Health Tracker Pro | AI-Powered Wellness</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Health Tracker Pro | AI-Powered Wellness</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-    :root {
-      --primary: #4CAF50;
-      --primary-dark: #388E3C;
-      --primary-light: #81C784;
-      --secondary: #2196F3;
-      --accent: #FF9800;
-      --accent-dark: #F57C00;
-      --dark: #121212;
-      --darker: #0a0a0a;
-      --dark-gray: #1e1e1e;
-      --medium-gray: #2d2d2d;
-      --light-gray: #e0e0e0;
-      --text-light: #f5f5f5;
-      --text-muted: #b0b0b0;
-      --danger: #f44336;
-      --success: #66BB6A;
-      --warning: #FFC107;
-      --border-radius: 12px;
-      --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      --transition: all 0.3s ease;
+:root {
+--primary: #4CAF50;
+--primary-dark: #388E3C;
+--primary-light: #81C784;
+--secondary: #2196F3;
+--accent: #FF9800;
+--accent-dark: #F57C00;
+--dark: #121212;
+--darker: #0a0a0a;
+--dark-gray: #1e1e1e;
+--medium-gray: #2d2d2d;
+--light-gray: #e0e0e0;
+--text-light: #f5f5f5;
+--text-muted: #b0b0b0;
+--danger: #f44336;
+--success: #66BB6A;
+--warning: #FFC107;
+--border-radius: 12px;
+--box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+--transition: all 0.3s ease;
       
       /* New theme colors */
       --sleep-theme: #4b0082;
@@ -41,1721 +41,1348 @@
       --mental-theme-light: #2a4a9c;
       --nutrition-theme: #d35400;
       --nutrition-theme-light: #e67e22;
-    }
+}
 
-    body {
-      background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
-      color: var(--text-light);
-      line-height: 1.6;
-      min-height: 100vh;
-      padding-bottom: 2rem;
+body {
+background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+color: var(--text-light);
+line-height: 1.6;
+min-height: 100vh;
+padding-bottom: 2rem;
       scroll-behavior: smooth;
-    }
-
-    /* Header Styles */
-    header {
-      background: rgba(18, 18, 18, 0.9);
-      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      padding: 1rem 2rem;
-      backdrop-filter: blur(10px);
-    }
-
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-weight: 700;
-      font-size: 1.5rem;
-      color: var(--primary-light);
-      text-decoration: none;
-    }
-
-    .logo i {
-      font-size: 1.8rem;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-weight: 500;
-      transition: var(--transition);
-      position: relative;
-    }
-
-    .nav-links a:hover {
-      color: var(--primary-light);
-    }
-
-    .nav-links a.active {
-      color: var(--primary-light);
-      font-weight: 600;
-    }
-
-    .nav-links a.active::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--primary);
-      border-radius: 10px;
-    }
-
-    .user-actions {
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-    }
-
-    .notification-bell {
-      position: relative;
-      color: var(--text-muted);
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .notification-bell:hover {
-      color: var(--secondary);
-    }
-
-    .notification-badge {
-      position: absolute;
-      top: -5px;
-      right: -5px;
-      background: var(--danger);
-      color: white;
-      font-size: 0.6rem;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-    }
-
-    .user-profile {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      cursor: pointer;
-    }
-
-    .user-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: var(--secondary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: bold;
-      font-size: 1.1rem;
-    }
-
-    .user-name {
-      font-weight: 500;
-      color: var(--text-light);
-    }
-
-    /* Hero Section */
-    .hero {
-      background: linear-gradient(120deg, #1a3a1f, #0d2a1a);
-      color: white;
-      padding: 6rem 2rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      border-bottom: 1px solid var(--primary-dark);
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon fill="rgba(0,0,0,0.2)" points="0,100 100,0 100,100"/></svg>');
-      background-size: cover;
-    }
-
-    .hero-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero h1 {
-      font-size: 3.2rem;
-      margin-bottom: 1.5rem;
-      font-weight: 700;
-      background: linear-gradient(to right, var(--primary-light), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero p {
-      font-size: 1.3rem;
-      margin-bottom: 2.5rem;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      opacity: 0.9;
-      color: var(--text-light);
-    }
-
-    .hero-stats {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .stat-card {
-      background: rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(5px);
-      border-radius: var(--border-radius);
-      padding: 1.5rem 2rem;
-      min-width: 200px;
-      text-align: center;
-      transition: var(--transition);
-      border: 1px solid rgba(76, 175, 80, 0.2);
-    }
-
-    .stat-card:hover {
-      transform: translateY(-5px);
-      background: rgba(0, 0, 0, 0.4);
-      border-color: rgba(76, 175, 80, 0.4);
-    }
-
-    .stat-value {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: var(--primary-light);
-    }
-
-    .stat-label {
-      font-size: 1rem;
-      opacity: 0.85;
-    }
-
-    /* Main Content */
-    .container {
-      max-width: 1400px;
-      margin: 3rem auto;
-      padding: 0 2rem;
-    }
-
-    .section-title {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 2rem;
-      color: var(--text-light);
-      margin-bottom: 2.5rem;
-      padding-bottom: 1rem;
-      border-bottom: 2px solid var(--medium-gray);
-    }
-
-    .section-title i {
-      color: var(--primary);
-    }
-
-    .section-subtitle {
-      color: var(--text-muted);
-      font-size: 1.2rem;
-      max-width: 800px;
-      margin-bottom: 3rem;
-    }
-
-    /* AI Body Analysis Section */
-    .ai-section {
-      display: flex;
-      gap: 3rem;
-      align-items: center;
-      margin-bottom: 5rem;
-      background: var(--dark-gray);
-      border-radius: var(--border-radius);
-      overflow: hidden;
-      box-shadow: var(--box-shadow);
-    }
-
-    .ai-content {
-      flex: 1;
-      padding: 3rem;
-    }
-
-    .ai-image {
-      flex: 1;
-      background: linear-gradient(45deg, #0d2a1a, #1a3a1f);
-      min-height: 500px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .ai-image::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
-      opacity: 0.7;
-    }
-
-    .ai-features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .feature-card {
-      background: var(--medium-gray);
-      border-radius: var(--border-radius);
-      padding: 1.5rem;
-      transition: var(--transition);
-      border: 1px solid rgba(76, 175, 80, 0.1);
-    }
-
-    .feature-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--primary);
-    }
-
-    .feature-card i {
-      font-size: 2.5rem;
-      color: var(--primary);
-      margin-bottom: 1rem;
-    }
-
-    .feature-card h4 {
-      font-size: 1.3rem;
-      margin-bottom: 0.75rem;
-      color: var(--text-light);
-    }
-
-    .feature-card p {
-      color: var(--text-muted);
-    }
-
-    /* Subscription Plans */
-    .pricing-section {
-      margin-bottom: 5rem;
-    }
-
-    .pricing-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .pricing-card {
-      background: var(--dark-gray);
-      border-radius: var(--border-radius);
-      padding: 2.5rem;
-      text-align: center;
-      transition: var(--transition);
-      border: 1px solid var(--medium-gray);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .pricing-card.popular {
-      border-color: var(--primary);
-      transform: scale(1.03);
-      box-shadow: 0 10px 30px rgba(76, 175, 80, 0.2);
-    }
-
-    .popular-badge {
-      position: absolute;
-      top: 20px;
-      right: -30px;
-      background: var(--primary);
-      color: white;
-      padding: 0.5rem 3rem;
-      transform: rotate(45deg);
-      font-size: 0.8rem;
-      font-weight: 600;
-    }
-
-    .pricing-card h3 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      color: var(--text-light);
-    }
-
-    .pricing-card .price {
-      font-size: 3.5rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      color: var(--primary-light);
-    }
-
-    .pricing-card .price span {
-      font-size: 1.2rem;
-      color: var(--text-muted);
-    }
-
-    .pricing-features {
-      list-style: none;
-      margin-bottom: 2rem;
-    }
-
-    .pricing-features li {
-      padding: 0.8rem 0;
-      border-bottom: 1px solid var(--medium-gray);
-      color: var(--text-muted);
-    }
-
-    .pricing-features li:last-child {
-      border-bottom: none;
-    }
-
-    .pricing-features li i {
-      color: var(--primary);
-      margin-right: 0.5rem;
-    }
-
-    .pricing-card .btn {
-      width: auto;
-      padding: 1rem 2.5rem;
-      font-size: 1.1rem;
-      border-radius: 30px;
-      font-weight: 600;
-    }
-
-    /* Mobile App Section */
-    .app-section {
-      display: flex;
-      gap: 3rem;
-      align-items: center;
-      margin-bottom: 5rem;
-      background: var(--dark-gray);
-      border-radius: var(--border-radius);
-      overflow: hidden;
-      box-shadow: var(--box-shadow);
-    }
-
-    .app-content {
-      flex: 1;
-      padding: 3rem;
-    }
-
-    .app-image {
-      flex: 1;
-      min-height: 500px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .app-image::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
-      opacity: 0.7;
-    }
-
-    .app-stores {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .app-store-btn {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--medium-gray);
-      padding: 0.8rem 1.5rem;
-      border-radius: 8px;
-      color: var(--text-light);
-      text-decoration: none;
-      transition: var(--transition);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .app-store-btn:hover {
-      background: var(--primary);
-      transform: translateY(-3px);
-    }
-
-    /* Footer */
-    footer {
-      background: var(--darker);
-      padding: 4rem 2rem;
-      margin-top: 3rem;
-      border-top: 1px solid var(--medium-gray);
-    }
-
-    .footer-content {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 3rem;
-    }
-
-    .footer-logo {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--primary-light);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-about {
-      max-width: 350px;
-    }
-
-    .footer-about p {
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-links h3 {
-      margin-bottom: 1.5rem;
-      color: var(--text-light);
-      font-size: 1.3rem;
-    }
-
-    .footer-links ul {
-      list-style: none;
-    }
-
-    .footer-links li {
-      margin-bottom: 0.8rem;
-    }
-
-    .footer-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    .footer-links a:hover {
-      color: var(--primary-light);
-    }
-
-    .social-links {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .social-links a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background: var(--dark-gray);
-      border-radius: 50%;
-      color: var(--text-light);
-      transition: var(--transition);
-    }
-
-    .social-links a:hover {
-      background: var(--primary);
-      color: white;
-      transform: translateY(-3px);
-    }
-
-    .copyright {
-      text-align: center;
-      padding-top: 3rem;
-      margin-top: 3rem;
-      border-top: 1px solid var(--medium-gray);
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-block;
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 0.9rem 1.8rem;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      text-align: center;
-    }
-
-    .btn:hover {
-      background: var(--primary-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
-    }
-
-    .btn i {
-      margin-right: 0.5rem;
-    }
-
-    .btn-secondary {
-      background: var(--secondary);
-    }
-
-    .btn-secondary:hover {
-      background: #0d8aee;
-    }
-
-    .btn-accent {
-      background: var(--accent);
-    }
-
-    .btn-accent:hover {
-      background: var(--accent-dark);
-    }
-
-    /* Responsive Design */
-    @media (max-width: 1024px) {
-      .ai-section, .app-section {
-        flex-direction: column;
-      }
-      
-      .ai-image, .app-image {
-        width: 100%;
-        min-height: 400px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .navbar {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      
-      .nav-links {
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      
-      .hero-stats {
-        gap: 1rem;
-      }
-      
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      
-      .section-title {
-        font-size: 1.8rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero {
-        padding: 4rem 1rem;
-      }
-      
-      .hero h1 {
-        font-size: 2rem;
-      }
-      
-      .stat-card {
-        min-width: 100%;
-      }
-      
-      .pricing-cards {
-        grid-template-columns: 1fr;
-      }
-      
-      .app-stores {
-        flex-direction: column;
-      }
-    }
-
-    /* Authorization Page Styles */
-    .auth-container {
-      max-width: 800px;
-      margin: 4rem auto;
-      padding: 0 1.5rem;
-    }
-
-    .auth-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .auth-header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 1rem;
-      color: var(--primary-light);
-    }
-
-    .auth-header p {
-      color: var(--text-muted);
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .auth-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .auth-card {
-      background: var(--dark-gray);
-      border-radius: var(--border-radius);
-      padding: 2.5rem;
-      text-align: center;
-      transition: var(--transition);
-      box-shadow: var(--box-shadow);
-      border: 2px solid transparent;
-    }
-
-    .auth-card:hover {
-      transform: translateY(-8px);
-      border-color: var(--primary);
-    }
-
-    .auth-icon {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 1.5rem;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-      color: white;
-    }
-
-    .auth-card.user .auth-icon {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    }
-
-    .auth-card.trainer .auth-icon {
-      background: linear-gradient(135deg, var(--secondary), #0d8aee);
-    }
-
-    .auth-card.owner .auth-icon {
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-    }
-
-    .auth-card h3 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      color: var(--text-light);
-    }
-
-    .auth-card p {
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-      min-height: 80px;
-    }
-
-    .auth-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      margin-top: 1.5rem;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      text-align: left;
-    }
-
-    .form-group label {
-      font-weight: 500;
-      color: var(--text-light);
-    }
-
-    .form-group input {
-      padding: 0.9rem 1.2rem;
-      border-radius: 8px;
-      border: 1px solid var(--medium-gray);
-      background: var(--darker);
-      color: var(--text-light);
-      font-size: 1rem;
-      transition: var(--transition);
-    }
-
-    .form-group input:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3);
-    }
-
-    .remember-forgot {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 0.5rem;
-    }
-
-    .remember-forgot label {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--text-muted);
-      cursor: pointer;
-    }
-
-    .remember-forgot a {
-      color: var(--primary-light);
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    .remember-forgot a:hover {
-      text-decoration: underline;
-    }
-
-    .auth-card .btn {
-      width: 100%;
-      margin-top: 1rem;
-    }
-
-    .auth-footer {
-      text-align: center;
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--medium-gray);
-      color: var(--text-muted);
-    }
-
-    .auth-footer a {
-      color: var(--primary-light);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .auth-footer a:hover {
-      text-decoration: underline;
-    }
+}
+
+/* Header Styles */
+header {
+background: rgba(18, 18, 18, 0.9);
+box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+position: sticky;
+top: 0;
+z-index: 100;
+padding: 1rem 2rem;
+backdrop-filter: blur(10px);
+}
+
+.navbar {
+display: flex;
+justify-content: space-between;
+align-items: center;
+max-width: 1400px;
+margin: 0 auto;
+}
+
+.logo {
+display: flex;
+align-items: center;
+gap: 0.75rem;
+font-weight: 700;
+font-size: 1.5rem;
+color: var(--primary-light);
+text-decoration: none;
+}
+
+.logo i {
+font-size: 1.8rem;
+}
+
+.nav-links {
+display: flex;
+gap: 2rem;
+list-style: none;
+}
+
+.nav-links a {
+color: var(--text-muted);
+text-decoration: none;
+font-weight: 500;
+transition: var(--transition);
+position: relative;
+}
+
+.nav-links a:hover {
+color: var(--primary-light);
+}
+
+.nav-links a.active {
+color: var(--primary-light);
+font-weight: 600;
+}
+
+.nav-links a.active::after {
+content: '';
+position: absolute;
+bottom: -8px;
+left: 0;
+right: 0;
+height: 3px;
+background: var(--primary);
+border-radius: 10px;
+}
+
+.user-actions {
+display: flex;
+gap: 1.5rem;
+align-items: center;
+}
+
+/* Hero Section */
+.hero {
+background: linear-gradient(120deg, #1a3a1f, #0d2a1a);
+color: white;
+padding: 6rem 2rem;
+text-align: center;
+position: relative;
+overflow: hidden;
+border-bottom: 1px solid var(--primary-dark);
+}
+
+.hero::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon fill="rgba(0,0,0,0.2)" points="0,100 100,0 100,100"/></svg>');
+background-size: cover;
+}
+
+.hero-content {
+max-width: 1200px;
+margin: 0 auto;
+position: relative;
+z-index: 1;
+}
+
+.hero h1 {
+font-size: 3.2rem;
+margin-bottom: 1.5rem;
+font-weight: 700;
+background: linear-gradient(to right, var(--primary-light), var(--secondary));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.hero p {
+font-size: 1.3rem;
+margin-bottom: 2.5rem;
+max-width: 700px;
+margin-left: auto;
+margin-right: auto;
+opacity: 0.9;
+color: var(--text-light);
+}
+
+.hero-stats {
+display: flex;
+justify-content: center;
+gap: 2rem;
+margin-top: 2rem;
+flex-wrap: wrap;
+}
+
+.stat-card {
+background: rgba(0, 0, 0, 0.3);
+backdrop-filter: blur(5px);
+border-radius: var(--border-radius);
+padding: 1.5rem 2rem;
+min-width: 200px;
+text-align: center;
+transition: var(--transition);
+border: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.stat-card:hover {
+transform: translateY(-5px);
+background: rgba(0, 0, 0, 0.4);
+border-color: rgba(76, 175, 80, 0.4);
+}
+
+.stat-value {
+font-size: 2.5rem;
+font-weight: 700;
+margin-bottom: 0.5rem;
+color: var(--primary-light);
+}
+
+.stat-label {
+font-size: 1rem;
+opacity: 0.85;
+}
+
+/* Main Content */
+.container {
+max-width: 1400px;
+margin: 3rem auto;
+padding: 0 2rem;
+}
+
+.section-title {
+display: flex;
+align-items: center;
+gap: 0.75rem;
+font-size: 2rem;
+color: var(--text-light);
+margin-bottom: 2.5rem;
+padding-bottom: 1rem;
+border-bottom: 2px solid var(--medium-gray);
+}
+
+.section-title i {
+color: var(--primary);
+}
+
+.section-subtitle {
+color: var(--text-muted);
+font-size: 1.2rem;
+max-width: 800px;
+margin-bottom: 3rem;
+}
+
+/* AI Body Analysis Section */
+.ai-section {
+display: flex;
+gap: 3rem;
+align-items: center;
+margin-bottom: 5rem;
+background: var(--dark-gray);
+border-radius: var(--border-radius);
+overflow: hidden;
+box-shadow: var(--box-shadow);
+}
+
+.ai-content {
+flex: 1;
+padding: 3rem;
+}
+
+.ai-image {
+flex: 1;
+background: linear-gradient(45deg, #0d2a1a, #1a3a1f);
+min-height: 500px;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+overflow: hidden;
+}
+
+.ai-image::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
+opacity: 0.7;
+}
+
+.ai-features {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 1.5rem;
+margin-top: 2rem;
+}
+
+.feature-card {
+background: var(--medium-gray);
+border-radius: var(--border-radius);
+padding: 1.5rem;
+transition: var(--transition);
+border: 1px solid rgba(76, 175, 80, 0.1);
+}
+
+.feature-card:hover {
+transform: translateY(-5px);
+border-color: var(--primary);
+}
+
+.feature-card i {
+font-size: 2.5rem;
+color: var(--primary);
+margin-bottom: 1rem;
+}
+
+.feature-card h4 {
+font-size: 1.3rem;
+margin-bottom: 0.75rem;
+color: var(--text-light);
+}
+
+.feature-card p {
+color: var(--text-muted);
+}
+
+/* Subscription Plans */
+.pricing-section {
+margin-bottom: 5rem;
+}
+
+.pricing-cards {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 2rem;
+}
+
+.pricing-card {
+background: var(--dark-gray);
+border-radius: var(--border-radius);
+padding: 2.5rem;
+text-align: center;
+transition: var(--transition);
+border: 1px solid var(--medium-gray);
+position: relative;
+overflow: hidden;
+}
+
+.pricing-card.popular {
+border-color: var(--primary);
+transform: scale(1.03);
+box-shadow: 0 10px 30px rgba(76, 175, 80, 0.2);
+}
+
+.popular-badge {
+position: absolute;
+top: 20px;
+right: -30px;
+background: var(--primary);
+color: white;
+padding: 0.5rem 3rem;
+transform: rotate(45deg);
+font-size: 0.8rem;
+font-weight: 600;
+}
+
+.pricing-card h3 {
+font-size: 1.8rem;
+margin-bottom: 1rem;
+color: var(--text-light);
+}
+
+.pricing-card .price {
+font-size: 3.5rem;
+font-weight: 700;
+margin-bottom: 1.5rem;
+color: var(--primary-light);
+}
+
+.pricing-card .price span {
+font-size: 1.2rem;
+color: var(--text-muted);
+}
+
+.pricing-features {
+list-style: none;
+margin-bottom: 2rem;
+}
+
+.pricing-features li {
+padding: 0.8rem 0;
+border-bottom: 1px solid var(--medium-gray);
+color: var(--text-muted);
+}
+
+.pricing-features li:last-child {
+border-bottom: none;
+}
+
+.pricing-features li i {
+color: var(--primary);
+margin-right: 0.5rem;
+}
+
+.pricing-card .btn {
+width: auto;
+padding: 1rem 2.5rem;
+font-size: 1.1rem;
+border-radius: 30px;
+font-weight: 600;
+}
+
+/* Responsive Web Dashboard Section */
+.dashboard-section {
+display: flex;
+gap: 3rem;
+align-items: center;
+margin-bottom: 5rem;
+background: var(--dark-gray);
+border-radius: var(--border-radius);
+overflow: hidden;
+box-shadow: var(--box-shadow);
+}
+
+.dashboard-content {
+flex: 1;
+padding: 3rem;
+}
+
+.dashboard-image {
+flex: 1;
+min-height: 500px;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+overflow: hidden;
+background: linear-gradient(45deg, var(--secondary), #0d8aee);
+}
+
+.dashboard-image::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: url('https://images.unsplash.com/photo-1544377193-33dcf4d68fb5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
+opacity: 0.4;
+}
+
+/* Footer */
+footer {
+background: var(--darker);
+padding: 4rem 2rem;
+margin-top: 3rem;
+border-top: 1px solid var(--medium-gray);
+}
+
+.footer-content {
+max-width: 1400px;
+margin: 0 auto;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 3rem;
+}
+
+.footer-logo {
+font-size: 1.8rem;
+font-weight: 700;
+color: var(--primary-light);
+display: flex;
+align-items: center;
+gap: 0.5rem;
+margin-bottom: 1.5rem;
+}
+
+.footer-about {
+max-width: 350px;
+}
+
+.footer-about p {
+color: var(--text-muted);
+margin-bottom: 1.5rem;
+}
+
+.footer-links h3 {
+margin-bottom: 1.5rem;
+color: var(--text-light);
+font-size: 1.3rem;
+}
+
+.footer-links ul {
+list-style: none;
+}
+
+.footer-links li {
+margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+color: var(--text-muted);
+text-decoration: none;
+transition: var(--transition);
+}
+
+.footer-links a:hover {
+color: var(--primary-light);
+}
+
+.social-links {
+display: flex;
+gap: 1rem;
+margin-top: 1.5rem;
+}
+
+.social-links a {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 40px;
+height: 40px;
+background: var(--dark-gray);
+border-radius: 50%;
+color: var(--text-light);
+transition: var(--transition);
+}
+
+.social-links a:hover {
+background: var(--primary);
+color: white;
+transform: translateY(-3px);
+}
+
+.copyright {
+text-align: center;
+padding-top: 3rem;
+margin-top: 3rem;
+border-top: 1px solid var(--medium-gray);
+color: var(--text-muted);
+font-size: 0.9rem;
+}
+
+/* Buttons */
+.btn {
+display: inline-block;
+background: var(--primary);
+color: white;
+border: none;
+padding: 0.9rem 1.8rem;
+border-radius: 8px;
+font-size: 1rem;
+font-weight: 600;
+cursor: pointer;
+transition: var(--transition);
+text-align: center;
+text-decoration: none;
+}
+
+.btn:hover {
+background: var(--primary-dark);
+transform: translateY(-2px);
+box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+}
+
+.btn i {
+margin-right: 0.5rem;
+}
+
+.btn-secondary {
+background: var(--secondary);
+}
+
+.btn-secondary:hover {
+background: #0d8aee;
+}
+
+.btn-accent {
+background: var(--accent);
+}
+
+.btn-accent:hover {
+background: var(--accent-dark);
+}
+
+
+/* --- NEW: COMBINED & INTERACTIVE NUTRITION SECTION --- */
+.master-nutrition-section {
+display: flex;
+gap: 3rem;
+align-items: stretch;
+background: var(--dark-gray);
+border-radius: var(--border-radius);
+overflow: hidden;
+box-shadow: var(--box-shadow);
+}
+.nutrition-content-master {
+flex: 1;
+padding: 3rem;
+display: flex;
+flex-direction: column;
+}
+.nutrition-switcher {
+display: flex;
+gap: 0.5rem;
+background: var(--darker);
+padding: 0.5rem;
+border-radius: 10px;
+margin: 1.5rem 0;
+}
+.switcher-btn {
+flex: 1;
+padding: 0.8rem;
+border-radius: 8px;
+border: none;
+background: transparent;
+color: var(--text-muted);
+font-size: 1rem;
+font-weight: 600;
+cursor: pointer;
+transition: var(--transition);
+}
+.switcher-btn.active {
+background: var(--nutrition-theme);
+color: white;
+box-shadow: 0 4px 10px rgba(211, 84, 0, 0.3);
+}
+.nutrition-features-panel {
+display: none;
+grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+gap: 1.5rem;
+animation: fadeIn 0.5s ease;
+}
+.nutrition-features-panel.active {
+display: grid;
+}
+.nutrition-feature-card {
+background: var(--medium-gray);
+border-radius: var(--border-radius);
+padding: 1.5rem;
+border-left: 3px solid var(--nutrition-theme);
+}
+.nutrition-feature-card i {
+font-size: 2rem;
+color: var(--nutrition-theme-light);
+margin-bottom: 1rem;
+}
+.nutrition-feature-card h4 {
+font-size: 1.2rem;
+color: var(--text-light);
+margin-bottom: 0.5rem;
+}
+.nutrition-feature-card p {
+color: var(--text-muted);
+font-size: 0.9rem;
+}
+.nutrition-visual-master {
+flex: 1;
+min-height: 500px;
+position: relative;
+}
+.nutrition-visual-panel {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+padding: 2rem;
+color: white;
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.nutrition-visual-panel.active {
+opacity: 1;
+visibility: visible;
+}
+.nutrition-visual-panel::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-size: cover;
+background-position: center;
+opacity: 0.3;
+}
+#visual-log::before {
+background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+}
+#visual-scan::before {
+background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+}
+
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(10px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+.ai-section, .dashboard-section, .master-nutrition-section {
+flex-direction: column;
+}
+
+.ai-image, .dashboard-image, .nutrition-visual-master {
+width: 100%;
+min-height: 400px;
+}
+}
+
+@media (max-width: 768px) {
+.navbar {
+flex-direction: column;
+gap: 1rem;
+}
+
+.nav-links {
+gap: 1rem;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.hero h1 {
+font-size: 2.5rem;
+}
+
+.section-title {
+font-size: 1.8rem;
+}
+}
+
+@media (max-width: 480px) {
+.hero {
+padding: 4rem 1rem;
+}
+
+.hero h1 {
+font-size: 2rem;
+}
+
+.stat-card {
+min-width: 100%;
+}
+
+.pricing-cards {
+grid-template-columns: 1fr;
+}
+}
+
+/* --- IMPROVED MODAL STYLES --- */
+
+/* Base Modal Overlay */
+.modal-overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.7);
+backdrop-filter: blur(5px);
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 1000;
+padding: 1rem;
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.visible {
+opacity: 1;
+visibility: visible;
+}
+
+.modal-content {
+position: relative;
+background: var(--dark-gray);
+border-radius: var(--border-radius);
+width: 100%;
+transform: scale(0.95);
+transition: transform 0.3s ease;
+overflow: hidden;
+}
+
+.modal-overlay.visible .modal-content {
+transform: scale(1);
+}
+
+.close-button {
+position: absolute;
+top: 10px;
+right: 15px;
+background: none;
+border: none;
+color: var(--text-muted);
+font-size: 2rem;
+cursor: pointer;
+transition: var(--transition);
+z-index: 10;
+}
+
+.close-button:hover {
+color: var(--text-light);
+transform: rotate(90deg);
+}
+
+/* Role Choice Modal */
+#role-choice-modal .modal-content {
+max-width: 400px;
+padding: 2.5rem;
+text-align: center;
+}
+
+.role-choice-header h1 {
+font-size: 2rem;
+color: var(--primary-light);
+margin-bottom: 0.5rem;
+}
+
+.role-choice-header p {
+color: var(--text-muted);
+margin-bottom: 2rem;
+}
+
+.role-choice-buttons {
+display: flex;
+flex-direction: column;
+gap: 1rem;
+}
+
+.role-choice-buttons .btn {
+width: 100%;
+padding: 1rem;
+font-size: 1.1rem;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.role-choice-buttons .btn:hover {
+transform: translateY(-3px);
+box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Login Form Modal */
+#login-modal .modal-content {
+max-width: 450px;
+border-top: 4px solid transparent; /* Base for dynamic color */
+transition: transform 0.3s ease, border-color 0.3s ease;
+}
+/* Dynamic border color based on role */
+#login-modal .modal-content[data-show="user"] { border-color: var(--primary); }
+#login-modal .modal-content[data-show="trainer"] { border-color: var(--secondary); }
+#login-modal .modal-content[data-show="owner"] { border-color: var(--accent); }
+
+.auth-container {
+padding: 1.5rem 2.5rem 2rem;
+}
+
+/* Hide all auth cards by default inside the modal */
+#login-modal .auth-card {
+display: none;
+}
+
+/* Show the specific card based on data-show attribute */
+#login-modal .modal-content[data-show="user"] .auth-card.user,
+#login-modal .modal-content[data-show="trainer"] .auth-card.trainer,
+#login-modal .modal-content[data-show="owner"] .auth-card.owner {
+display: block;
+}
+
+.auth-icon {
+width: 70px;
+height: 70px;
+margin: 0 auto 1rem;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 2.2rem;
+color: white;
+}
+.auth-card.user .auth-icon { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.auth-card.trainer .auth-icon { background: linear-gradient(135deg, var(--secondary), #0d8aee)); }
+.auth-card.owner .auth-icon { background: linear-gradient(135deg, var(--accent), var(--accent-dark)); }
+
+.auth-card h3 {
+font-size: 1.8rem;
+margin-bottom: 1.5rem;
+color: var(--text-light);
+text-align: center;
+}
+
+.auth-form { display: flex; flex-direction: column; gap: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; text-align: left; }
+.form-group label { font-weight: 500; color: var(--text-muted); font-size: 0.9rem; }
+.form-group input { padding: 0.8rem 1rem; border-radius: 8px; border: 1px solid var(--medium-gray); background: var(--darker); color: var(--text-light); font-size: 1rem; transition: var(--transition); }
+.form-group input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2); }
+
+.remember-forgot { display: flex; justify-content: space-between; align-items: center; margin-top: 0.2rem; }
+.remember-forgot label { display: flex; align-items: center; gap: 0.5rem; color: var(--text-muted); cursor: pointer; font-size: 0.9rem;}
+.remember-forgot a { color: var(--primary-light); text-decoration: none; transition: var(--transition); font-size: 0.9rem; }
+.remember-forgot a:hover { text-decoration: underline; }
+.auth-card .btn { width: 100%; margin-top: 1.2rem; }
+.auth-footer { text-align: center; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--medium-gray); color: var(--text-muted); font-size: 0.9rem;}
+.auth-footer a { color: var(--primary-light); text-decoration: none; font-weight: 500; }
+.auth-footer a:hover { text-decoration: underline; }
+
+.back-button {
+position: absolute;
+top: 10px;
+left: 15px;
+background: none;
+border: none;
+color: var(--text-muted);
+font-size: 1.5rem;
+cursor: pointer;
+transition: var(--transition);
+}
+.back-button:hover { color: var(--text-light); transform: translateX(-3px); }
+
+/* Only show scrollbar on very short screens */
+@media (max-height: 750px) {
+  #login-modal .modal-content {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}
     
-    /* NEW FEATURES */
-    
-    /* Sleep Tracking Section */
-    .sleep-section {
-      background: linear-gradient(135deg, var(--sleep-theme), var(--sleep-theme-light));
-      border-radius: var(--border-radius);
-      padding: 3rem;
-      margin-bottom: 5rem;
-      box-shadow: var(--box-shadow);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .sleep-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('https://images.unsplash.com/photo-1511882150382-421056c89033?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
-      opacity: 0.15;
-    }
-    
-    .sleep-content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-    
-    .sleep-header {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-    
-    .sleep-header h2 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      color: white;
-    }
-    
-    .sleep-header p {
-      color: rgba(255,255,255,0.8);
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    
-    .sleep-features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    
-    .sleep-feature {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: var(--border-radius);
-      padding: 2rem;
-      text-align: center;
-      transition: var(--transition);
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-    
-    .sleep-feature:hover {
-      transform: translateY(-5px);
-      background: rgba(255, 255, 255, 0.15);
-    }
-    
-    .sleep-feature i {
-      font-size: 3rem;
-      color: white;
-      margin-bottom: 1rem;
-    }
-    
-    .sleep-feature h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: white;
-    }
-    
-    .sleep-feature p {
-      color: rgba(255,255,255,0.8);
-    }
-    
-    .sleep-section .btn {
-      align-self: center;
-      background: white;
-      color: var(--sleep-theme);
-      font-weight: 600;
-    }
-    
-    .sleep-section .btn:hover {
-      background: rgba(255,255,255,0.9);
-    }
-    
-    /* Mental Wellness Section */
-    .mental-section {
-      background: linear-gradient(135deg, var(--mental-theme), var(--mental-theme-light));
-      border-radius: var(--border-radius);
-      padding: 3rem;
-      margin-bottom: 5rem;
-      box-shadow: var(--box-shadow);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .mental-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
-      opacity: 0.15;
-    }
-    
-    .mental-content {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
-    
-    .mental-text h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-      color: white;
-    }
-    
-    .mental-text p {
-      color: rgba(255,255,255,0.9);
-      margin-bottom: 2rem;
-      line-height: 1.8;
-    }
-    
-    .mental-stats {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
-    
-    .mental-stat {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(5px);
-      border-radius: var(--border-radius);
-      padding: 1.5rem;
-      text-align: center;
-    }
-    
-    .mental-stat-value {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: white;
-    }
-    
-    .mental-stat-label {
-      font-size: 1rem;
-      color: rgba(255,255,255,0.8);
-    }
-    
-    .mental-image {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .mental-image-container {
-      width: 100%;
-      max-width: 400px;
-      height: 300px;
-      border-radius: var(--border-radius);
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(5px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
-      text-align: center;
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-    
-    .mental-image-container i {
-      font-size: 4rem;
-      color: white;
-      margin-bottom: 1.5rem;
-    }
-    
-    .mental-image-container h3 {
-      font-size: 1.8rem;
-      color: white;
-      margin-bottom: 1rem;
-    }
-    
-    /* Nutrition Tracking Section */
-    .nutrition-section {
-      display: flex;
-      gap: 3rem;
-      align-items: center;
-      margin-bottom: 5rem;
-      background: var(--dark-gray);
-      border-radius: var(--border-radius);
-      overflow: hidden;
-      box-shadow: var(--box-shadow);
-      border: 2px solid var(--nutrition-theme);
-    }
-    
-    .nutrition-content {
-      flex: 1;
-      padding: 3rem;
-    }
-    
-    .nutrition-image {
-      flex: 1;
-      background: linear-gradient(45deg, var(--nutrition-theme), var(--nutrition-theme-light));
-      min-height: 500px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .nutrition-image::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
-      opacity: 0.5;
-    }
-    
-    .nutrition-content h2 {
-      font-size: 2.2rem;
-      margin-bottom: 1.5rem;
-      color: var(--text-light);
-    }
-    
-    .nutrition-content h2 i {
-      color: var(--nutrition-theme);
-    }
-    
-    .nutrition-content p {
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-      font-size: 1.1rem;
-    }
-    
-    .nutrition-features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-    
-    .nutrition-feature {
-      background: var(--medium-gray);
-      border-radius: var(--border-radius);
-      padding: 1.5rem;
-      transition: var(--transition);
-      border: 1px solid var(--nutrition-theme);
-    }
-    
-    .nutrition-feature:hover {
-      transform: translateY(-5px);
-      background: rgba(211, 84, 0, 0.1);
-    }
-    
-    .nutrition-feature i {
-      font-size: 2rem;
-      color: var(--nutrition-theme);
-      margin-bottom: 1rem;
-    }
-    
-    .nutrition-feature h4 {
-      font-size: 1.3rem;
-      margin-bottom: 0.75rem;
-      color: var(--text-light);
-    }
-    
-    .nutrition-feature p {
-      color: var(--text-muted);
-      margin-bottom: 0;
-    }
-    
-    /* Animation */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    .feature-section {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    
-    .feature-section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
+/* NEW FEATURES a-z */
+.feature-section { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+.feature-section.visible { opacity: 1; transform: translateY(0); }
+.mental-content { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+.mental-image { display: flex; justify-content: center; align-items: center; }
+.mental-image-container { width: 100%; max-width: 400px; height: 300px; border-radius: var(--border-radius); background: rgba(255,255,255,0.1); backdrop-filter: blur(5px); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem; text-align: center; border: 1px solid rgba(255,255,255,0.2); }
+.mental-image-container h3 { font-size: 1.8rem; color: white; margin-bottom: 1rem; }
+.mental-image-container i { font-size: 4rem; color: white; margin-bottom: 1.5rem; }
+.mental-section { background: linear-gradient(135deg, var(--mental-theme), var(--mental-theme-light)); border-radius: var(--border-radius); padding: 3rem; margin-bottom: 5rem; box-shadow: var(--box-shadow); position: relative; overflow: hidden; }
+.mental-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover no-repeat; opacity: 0.15; }
+.mental-stat { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px); border-radius: var(--border-radius); padding: 1.5rem; text-align: center; }
+.mental-stat-label { font-size: 1rem; color: rgba(255,255,255,0.8); }
+.mental-stat-value { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; color: white; }
+.mental-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.mental-text h2 { font-size: 2.5rem; margin-bottom: 1.5rem; color: white; }
+.mental-text p { color: rgba(255,255,255,0.9); margin-bottom: 2rem; line-height: 1.8; }
+
+.sleep-content { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 2rem; }
+.sleep-feature { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: var(--border-radius); padding: 2rem; text-align: center; transition: var(--transition); border: 1px solid rgba(255,255,255,0.2); }
+.sleep-feature:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.15); }
+.sleep-feature h3 { font-size: 1.5rem; margin-bottom: 1rem; color: white; }
+.sleep-feature i { font-size: 3rem; color: white; margin-bottom: 1rem; }
+.sleep-feature p { color: rgba(255,255,255,0.8); }
+.sleep-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+.sleep-header { text-align: center; margin-bottom: 1rem; }
+.sleep-header h2 { font-size: 2.5rem; margin-bottom: 0.5rem; color: white; }
+.sleep-header p { color: rgba(255,255,255,0.8); max-width: 700px; margin: 0 auto; }
+.sleep-section { background: linear-gradient(135deg, var(--sleep-theme), var(--sleep-theme-light)); border-radius: var(--border-radius); padding: 3rem; margin-bottom: 5rem; box-shadow: var(--box-shadow); position: relative; overflow: hidden; }
+.sleep-section .btn { align-self: center; background: white; color: var(--sleep-theme); font-weight: 600; }
+.sleep-section .btn:hover { background: rgba(255,255,255,0.9); }
+.sleep-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('https://images.unsplash.com/photo-1511882150382-421056c89033?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover no-repeat; opacity: 0.15; }
+</style>
 </head>
 <body>
-  <!-- Header with Navigation -->
-  <header>
-    <nav class="navbar">
-      <a href="#" class="logo">
-        <i class="fas fa-heartbeat"></i>
-        HealthTrack Pro
-      </a>
-      
-      <ul class="nav-links">
-        <li><a href="#" class="active">Dashboard</a></li>
+<header>
+<nav class="navbar">
+<a href="#" class="logo">
+<i class="fas fa-heartbeat"></i>
+HealthTrack Pro
+</a>
+<ul class="nav-links">
+<li><a href="#" class="active">Dashboard</a></li>
         <li><a href="#ai-analysis">AI Analysis</a></li>
         <li><a href="#nutrition">Nutrition</a></li>
         <li><a href="#sleep">Sleep</a></li>
         <li><a href="#mental">Mental</a></li>
         <li><a href="#subscription">Subscription</a></li>
-      </ul>
-      
-      <div class="user-actions">
-        <a href="#authorise" class="btn">
-          <i class="fas fa-user"></i> Login
-        </a>
-      </div>
-    </nav>
-  </header>
+</ul>
+<div class="user-actions">
+<button id="login-btn" class="btn">
+<i class="fas fa-user"></i> Login
+</button>
+</div>
+</nav>
+</header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>AI-Powered Health & Fitness Tracking</h1>
-      <p>Advanced body analysis, personalized recommendations, and seamless mobile integration for your wellness journey</p>
-      
-      <div class="hero-stats">
-        <div class="stat-card">
-          <div class="stat-value">98%</div>
-          <div class="stat-label">Accuracy Rate</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">50K+</div>
-          <div class="stat-label">Active Users</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">24/7</div>
-          <div class="stat-label">AI Monitoring</div>
-        </div>
-      </div>
-    </div>
-  </section>
+<section class="hero">
+<div class="hero-content">
+<h1>AI-Powered Health & Fitness Tracking</h1>
+<p>Advanced body analysis, personalized recommendations, and a responsive dashboard for your wellness journey.</p>
+<div class="hero-stats">
+<div class="stat-card"><div class="stat-value">98%</div><div class="stat-label">Accuracy Rate</div></div>
+<div class="stat-card"><div class="stat-value">50K+</div><div class="stat-label">Active Users</div></div>
+<div class="stat-card"><div class="stat-value">24/7</div><div class="stat-label">AI Monitoring</div></div>
+</div>
+</div>
+</section>
 
-  <!-- AI Body Analysis Section -->
-  <div id="ai-analysis" class="container feature-section">
-    <div class="section-title">
-      <i class="fas fa-robot"></i>
-      AI Body Analysis
-    </div>
-    <p class="section-subtitle">Our advanced AI technology scans your body to provide personalized health insights and recommendations</p>
-    
-    <div class="ai-section">
-      <div class="ai-content">
-        <h3 style="font-size: 2rem; margin-bottom: 1.5rem; color: var(--text-light);">Comprehensive Body Scan Technology</h3>
-        <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.1rem;">
-          Using state-of-the-art computer vision and machine learning, our AI analyzes your body composition, posture, and movement patterns to deliver actionable insights for your health and fitness goals.
-        </p>
-        
-        <div class="ai-features">
-          <div class="feature-card">
-            <i class="fas fa-chart-line"></i>
-            <h4>Body Composition</h4>
-            <p>Measure body fat percentage, muscle mass, and water weight with precision.</p>
-          </div>
-          
-          <div class="feature-card">
-            <i class="fas fa-walking"></i>
-            <h4>Posture Analysis</h4>
-            <p>Detect postural imbalances and receive corrective exercises.</p>
-          </div>
-          
-          <div class="feature-card">
-            <i class="fas fa-apple-alt"></i>
-            <h4>Nutrition Guidance</h4>
-            <p>Personalized meal plans based on your body's unique needs.</p>
-          </div>
-          
-          <div class="feature-card">
-            <i class="fas fa-dumbbell"></i>
-            <h4>Workout Plans</h4>
-            <p>Custom exercise routines tailored to your body type and goals.</p>
-          </div>
-        </div>
-        
-        <button class="btn" style="margin-top: 2rem;">
-          <i class="fas fa-sync-alt"></i> Run Body Analysis
-        </button>
-      </div>
-      
-      <div class="ai-image">
-        <div style="position: relative; z-index: 2; text-align: center; padding: 2rem; color: white;">
-          <h3 style="font-size: 2rem; margin-bottom: 1rem;">AI Body Scan Preview</h3>
-          <p style="margin-bottom: 2rem; max-width: 400px;">Upload an image or use your camera for instant analysis</p>
-          <button class="btn btn-accent">
-            <i class="fas fa-camera"></i> Start Scan
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+<main class="container">
 
-  <!-- Nutrition Tracking Section -->
-  <div id="nutrition" class="container feature-section">
-    <div class="section-title">
-      <i class="fas fa-utensils"></i>
-      Nutrition Tracking
-    </div>
-    <p class="section-subtitle">Track your meals, analyze nutrition, and get personalized dietary recommendations</p>
-    
-    <div class="nutrition-section">
-      <div class="nutrition-content">
-        <h2><i class="fas fa-apple-alt"></i> Smart Nutrition Analysis</h2>
-        <p>Our AI-powered nutrition tracker helps you make better food choices by analyzing your meals, providing macro breakdowns, and suggesting improvements based on your health goals.</p>
-        
-        <div class="nutrition-features">
-          <div class="nutrition-feature">
-            <i class="fas fa-barcode"></i>
-            <h4>Barcode Scanning</h4>
-            <p>Scan food items to instantly log nutrition information</p>
-          </div>
-          
-          <div class="nutrition-feature">
-            <i class="fas fa-chart-pie"></i>
-            <h4>Macro Tracking</h4>
-            <p>Monitor carbs, protein, and fat intake with visual charts</p>
-          </div>
-          
-          <div class="nutrition-feature">
-            <i class="fas fa-lightbulb"></i>
-            <h4>AI Suggestions</h4>
-            <p>Get personalized meal recommendations based on your goals</p>
-          </div>
-          
-          <div class="nutrition-feature">
-            <i class="fas fa-glass-whiskey"></i>
-            <h4>Hydration Tracker</h4>
-            <p>Monitor your water intake throughout the day</p>
-          </div>
-        </div>
-        
-        <button class="btn btn-accent" style="margin-top: 2rem; background: var(--nutrition-theme);">
-          <i class="fas fa-utensils"></i> Start Food Diary
-        </button>
-      </div>
-      
-      <div class="nutrition-image">
-        <div style="position: relative; z-index: 2; text-align: center; padding: 2rem; color: white;">
-          <h3 style="font-size: 2rem; margin-bottom: 1rem;">Nutrition Dashboard</h3>
-          <p style="margin-bottom: 2rem; max-width: 400px;">Visualize your daily nutrition and get AI-powered insights</p>
-          <div style="display: flex; justify-content: center; margin-bottom: 1.5rem;">
-            <div style="width: 150px; height: 150px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold;">
-              82% Score
+<div id="ai-analysis" class="feature-section">
+<div class="section-title"><i class="fas fa-robot"></i> AI Body Analysis</div>
+<p class="section-subtitle">Our advanced AI technology provides personalized health insights and recommendations.</p>
+<div class="ai-section">
+<div class="ai-content">
+<h3 style="font-size: 2rem; margin-bottom: 1.5rem; color: var(--text-light);">Comprehensive Body Scan Technology</h3>
+<p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.1rem;">Using state-of-the-art computer vision, our AI analyzes your body composition, posture, and movement patterns to deliver actionable insights for your health and fitness goals.</p>
+<div class="ai-features">
+<div class="feature-card"><i class="fas fa-chart-line"></i><h4>Body Composition</h4><p>Measure body fat, muscle mass, and more.</p></div>
+<div class="feature-card"><i class="fas fa-walking"></i><h4>Posture Analysis</h4><p>Detect imbalances and get corrective exercises.</p></div>
+<div class="feature-card"><i class="fas fa-apple-alt"></i><h4>Nutrition Guidance</h4><p>Personalized meal plans based on your needs.</p></div>
+<div class="feature-card"><i class="fas fa-dumbbell"></i><h4>Workout Plans</h4><p>Custom routines tailored to your goals.</p></div>
+</div>
+<button class="btn" style="margin-top: 2rem;"><i class="fas fa-sync-alt"></i> Run Body Analysis</button>
+</div>
+<div class="ai-image"><div style="position: relative; z-index: 2; text-align: center; padding: 2rem; color: white;"><h3 style="font-size: 2rem; margin-bottom: 1rem;">AI Body Scan Preview</h3><p style="margin-bottom: 2rem; max-width: 400px;">Use your camera for instant analysis, right here in your browser.</p><button class="btn btn-accent"><i class="fas fa-camera"></i> Start Scan</button></div></div>
+</div>
+</div>
+
+  <div id="nutrition" class="feature-section">
+    <div class="section-title"><i class="fas fa-utensils"></i> Your Complete Nutrition Toolkit</div>
+    <p class="section-subtitle">Log meals with our barcode scanner, or use our revolutionary AI to analyze food from just a photo. Total control, your way.</p>
+    <div class="master-nutrition-section">
+        <div class="nutrition-content-master">
+            <h3 style="font-size: 2rem; margin-bottom: 0.5rem; color: var(--text-light);">Two Powerful Ways to Track</h3>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">Choose the method that fits your lifestyle for the most accurate and effortless nutrition tracking experience.</p>
+
+            <div class="nutrition-switcher">
+                <button class="switcher-btn active" data-tab="log">
+                    <i class="fas fa-pencil-alt"></i> Log & Track
+                </button>
+                <button class="switcher-btn" data-tab="scan">
+                    <i class="fas fa-camera"></i> Scan from Photo
+                </button>
             </div>
-          </div>
-          <p>Your nutrition quality this week</p>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- Sleep Tracking Section -->
-  <div id="sleep" class="container feature-section">
+            <div class="nutrition-features-panel active" data-panel="log">
+                <div class="nutrition-feature-card"><i class="fas fa-barcode"></i><h4>Barcode Scanning</h4><p>Instantly log packaged foods with our fast and accurate barcode reader.</p></div>
+                <div class="nutrition-feature-card"><i class="fas fa-chart-pie"></i><h4>Macro Tracking</h4><p>Monitor carbs, protein, and fat with clear, visual charts and daily goals.</p></div>
+                <div class="nutrition-feature-card"><i class="fas fa-lightbulb"></i><h4>AI Suggestions</h4><p>Receive smart meal recommendations based on your unique goals.</p></div>
+                <div class="nutrition-feature-card"><i class="fas fa-glass-whiskey"></i><h4>Hydration Tracker</h4><p>Easily log and monitor your water intake throughout the day.</p></div>
+            </div>
+
+            <div class="nutrition-features-panel" data-panel="scan">
+                <div class="nutrition-feature-card"><i class="fas fa-calculator"></i><h4>Calorie Estimation</h4><p>Our AI calculates calories with incredible accuracy from your meal photo.</p></div>
+                <div class="nutrition-feature-card"><i class="fas fa-chart-bar"></i><h4>Macro Breakdown</h4><p>Get a complete protein, carb, and fat breakdown automatically.</p></div>
+                <div class="nutrition-feature-card"><i class="fas fa-seedling"></i><h4>Ingredient Recognition</h4><p>AI identifies individual ingredients for a detailed nutritional profile.</p></div>
+                <div class="nutrition-feature-card"><i class="fas fa-ruler-combined"></i><h4>Portion Analysis</h4><p>Advanced algorithms estimate portion sizes to ensure precise tracking.</p></div>
+            </div>
+        </div>
+
+        <div class="nutrition-visual-master">
+            <div id="visual-log" class="nutrition-visual-panel active" data-visual="log">
+                <div style="position: relative; z-index: 2;">
+                    <h3 style="font-size: 2rem; margin-bottom: 1rem;">Your Nutrition Dashboard</h3>
+                    <p style="margin-bottom: 2rem; max-width: 400px;">Visualize your daily intake and get AI-powered insights.</p>
+                    <div style="width: 150px; height: 150px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 0 auto;">
+                      82% Score
+                    </div>
+                </div>
+            </div>
+            <div id="visual-scan" class="nutrition-visual-panel" data-visual="scan">
+                <div style="position: relative; z-index: 2;">
+                     <h3 style="font-size: 2rem; margin-bottom: 1rem;">Instant Meal Analysis</h3>
+                     <p style="margin-bottom: 2rem; max-width: 400px;">Simply snap a photo and let our AI do the work.</p>
+                     <div style="background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: var(--border-radius); backdrop-filter: blur(5px);">
+                        <h4 style="margin-bottom: 1rem; font-size: 1.5rem; color: var(--accent-light);">Scan Result: 485 kcal</h4>
+                        <p>Protein: 32g, Carbs: 45g, Fat: 20g</p>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <div id="sleep" class="feature-section">
     <div class="sleep-section">
       <div class="sleep-content">
-        <div class="sleep-header">
-          <h2><i class="fas fa-moon"></i> Advanced Sleep Analysis</h2>
-          <p>Understand your sleep patterns and get personalized recommendations for better rest and recovery</p>
-        </div>
-        
+        <div class="sleep-header"><h2><i class="fas fa-moon"></i> Advanced Sleep Analysis</h2><p>Understand your sleep patterns and get personalized recommendations for better rest and recovery.</p></div>
         <div class="sleep-features">
-          <div class="sleep-feature">
-            <i class="fas fa-bed"></i>
-            <h3>Sleep Duration Tracking</h3>
-            <p>Monitor how long you sleep each night with precision timing</p>
-          </div>
-          
-          <div class="sleep-feature">
-            <i class="fas fa-brain"></i>
-            <h3>Sleep Quality Analysis</h3>
-            <p>Measure sleep stages and quality using AI algorithms</p>
-          </div>
-          
-          <div class="sleep-feature">
-            <i class="fas fa-cloud-moon"></i>
-            <h3>Smart Wake-up</h3>
-            <p>Wake up at the optimal time in your sleep cycle</p>
-          </div>
+          <div class="sleep-feature"><i class="fas fa-bed"></i><h3>Sleep Duration Tracking</h3><p>Monitor how long you sleep each night with precision timing.</p></div>
+          <div class="sleep-feature"><i class="fas fa-brain"></i><h3>Sleep Quality Analysis</h3><p>Measure sleep stages and quality using AI algorithms.</p></div>
+          <div class="sleep-feature"><i class="fas fa-cloud-moon"></i><h3>Smart Wake-up</h3><p>Wake up at the optimal time in your sleep cycle.</p></div>
         </div>
-        
-        <button class="btn">
-          <i class="fas fa-chart-line"></i> View Sleep Reports
-        </button>
+        <button class="btn"><i class="fas fa-chart-line"></i> View Sleep Reports</button>
       </div>
     </div>
   </div>
 
-  <!-- Mental Wellness Section -->
-  <div id="mental" class="container feature-section">
+  <div id="mental" class="feature-section">
     <div class="mental-section">
       <div class="mental-content">
         <div class="mental-text">
           <h2><i class="fas fa-brain"></i> Mental Wellness & Mindfulness</h2>
-          <p>Track your mental health, practice mindfulness, and receive AI-powered recommendations to improve your emotional well-being. Our system analyzes mood patterns, stress levels, and provides guided meditation sessions tailored to your needs.</p>
-          <p>With daily check-ins and mood tracking, our AI identifies patterns and offers personalized strategies to enhance your mental resilience and emotional balance.</p>
-          
+          <p>Track your mental health, practice mindfulness, and receive AI-powered recommendations to improve your emotional well-being.</p>
           <div class="mental-stats">
-            <div class="mental-stat">
-              <div class="mental-stat-value">87%</div>
-              <div class="mental-stat-label">Stress Reduction</div>
-            </div>
-            <div class="mental-stat">
-              <div class="mental-stat-value">5.2x</div>
-              <div class="mental-stat-label">Mindfulness Increase</div>
-            </div>
-            <div class="mental-stat">
-              <div class="mental-stat-value">42%</div>
-              <div class="mental-stat-label">Faster Recovery</div>
-            </div>
-            <div class="mental-stat">
-              <div class="mental-stat-value">94%</div>
-              <div class="mental-stat-label">User Satisfaction</div>
-            </div>
+            <div class="mental-stat"><div class="mental-stat-value">87%</div><div class="mental-stat-label">Stress Reduction</div></div>
+            <div class="mental-stat"><div class="mental-stat-value">5.2x</div><div class="mental-stat-label">Mindfulness Increase</div></div>
+            <div class="mental-stat"><div class="mental-stat-value">42%</div><div class="mental-stat-label">Faster Recovery</div></div>
+            <div class="mental-stat"><div class="mental-stat-value">94%</div><div class="mental-stat-label">User Satisfaction</div></div>
           </div>
         </div>
-        
-        <div class="mental-image">
-          <div class="mental-image-container">
-            <i class="fas fa-head-side-brain"></i>
-            <h3>Daily Mood Tracker</h3>
-            <p>Log your emotions and track patterns over time</p>
-          </div>
-        </div>
+        <div class="mental-image"><div class="mental-image-container"><i class="fas fa-head-side-brain"></i><h3>Daily Mood Tracker</h3><p>Log your emotions and track patterns over time.</p></div></div>
       </div>
     </div>
   </div>
 
-  <!-- Subscription Plans Section -->
-  <div id="subscription" class="container feature-section">
-    <div class="pricing-section">
-      <div class="section-title">
-        <i class="fas fa-crown"></i>
-        Premium Subscription
-      </div>
-      <p class="section-subtitle">Unlock advanced features with our premium plans. All include AI analysis and mobile app sync</p>
-      
-      <div class="pricing-cards">
-        <div class="pricing-card">
-          <h3>Basic</h3>
-          <div class="price">$9<span>/month</span></div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> Basic AI Analysis</li>
-            <li><i class="fas fa-check"></i> 5 Body Scans/Month</li>
-            <li><i class="fas fa-check"></i> Mobile App Access</li>
-            <li><i class="fas fa-times"></i> Advanced Metrics</li>
-            <li><i class="fas fa-times"></i> Personal Trainer</li>
-          </ul>
-          <button class="btn">Get Started</button>
-        </div>
-        
-        <div class="pricing-card popular">
-          <div class="popular-badge">POPULAR</div>
-          <h3>Pro</h3>
-          <div class="price">$19<span>/month</span></div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> Advanced AI Analysis</li>
-            <li><i class="fas fa-check"></i> Unlimited Body Scans</li>
-            <li><i class="fas fa-check"></i> Mobile App Premium</li>
-            <li><i class="fas fa-check"></i> All Health Metrics</li>
-            <li><i class="fas fa-check"></i> Personal Trainer Access</li>
+<div id="subscription" class="feature-section">
+<div class="pricing-section">
+<div class="section-title"><i class="fas fa-crown"></i> Premium Subscription</div>
+<p class="section-subtitle">Unlock advanced features with our premium plans. All include AI analysis and seamless dashboard access.</p>
+<div class="pricing-cards">
+<div class="pricing-card">
+<h3>Basic</h3><div class="price">$9<span>/month</span></div>
+<ul class="pricing-features">
+<li><i class="fas fa-check"></i> Basic AI Analysis</li>
+<li><i class="fas fa-check"></i> 5 Body Scans/Month</li>
+<li><i class="fas fa-check"></i> Web Dashboard Access</li>
+<li><i class="fas fa-times"></i> Advanced Metrics</li>
+<li><i class="fas fa-times"></i> Personal Trainer</li>
+</ul><button class="btn">Get Started</button>
+</div>
+<div class="pricing-card popular">
+<div class="popular-badge">POPULAR</div>
+<h3>Pro</h3><div class="price">$19<span>/month</span></div>
+<ul class="pricing-features">
+<li><i class="fas fa-check"></i> Advanced AI Analysis</li>
+<li><i class="fas fa-check"></i> Unlimited Body Scans</li>
+<li><i class="fas fa-check"></i> Web Dashboard Premium</li>
+<li><i class="fas fa-check"></i> All Health Metrics</li>
+<li><i class="fas fa-check"></i> Personal Trainer Access</li>
             <li><i class="fas fa-check"></i> Nutrition & Sleep Tracking</li>
-          </ul>
-          <button class="btn">Get Started</button>
-        </div>
-        
-        <div class="pricing-card">
-          <h3>Business</h3>
-          <div class="price">$49<span>/month</span></div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> Enterprise AI Analysis</li>
-            <li><i class="fas fa-check"></i> Team Management</li>
-            <li><i class="fas fa-check"></i> Multi-User Access</li>
-            <li><i class="fas fa-check"></i> Dedicated Support</li>
-            <li><i class="fas fa-check"></i> Custom Integrations</li>
+</ul><button class="btn">Get Started</button>
+</div>
+<div class="pricing-card">
+<h3>Business</h3><div class="price">$49<span>/month</span></div>
+<ul class="pricing-features">
+<li><i class="fas fa-check"></i> Enterprise AI Analysis</li>
+<li><i class="fas fa-check"></i> Team Management</li>
+<li><i class="fas fa-check"></i> Multi-User Access</li>
+<li><i class="fas fa-check"></i> Dedicated Support</li>
+<li><i class="fas fa-check"></i> Custom Integrations</li>
             <li><i class="fas fa-check"></i> Mental Wellness Tools</li>
-          </ul>
-          <button class="btn">Get Started</button>
-        </div>
-      </div>
-    </div>
-  </div>
+</ul><button class="btn">Get Started</button>
+</div>
+</div>
+</div>
+</div>
 
-  <!-- Mobile App Section -->
-  <div class="container feature-section">
-    <div class="section-title">
-      <i class="fas fa-mobile-alt"></i>
-      Mobile Application
-    </div>
-    <p class="section-subtitle">Sync your health data across all devices and access AI features on the go</p>
-    
-    <div class="app-section">
-      <div class="app-image">
-        <div style="position: relative; z-index: 2; text-align: center; padding: 2rem; color: white;">
-          <h3 style="font-size: 2rem; margin-bottom: 1rem;">HealthTrack Pro App</h3>
-          <p style="margin-bottom: 2rem; max-width: 400px;">Scan, track, and analyze your health anytime, anywhere</p>
-          <div style="font-size: 3rem; margin-bottom: 1.5rem;">
-            <i class="fas fa-sync-alt fa-spin"></i>
-          </div>
-          <p>Real-time sync with web dashboard</p>
-        </div>
-      </div>
-      
-      <div class="app-content">
-        <h3 style="font-size: 2rem; margin-bottom: 1.5rem; color: var(--text-light);">Seamless Mobile Experience</h3>
-        <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1.1rem;">
-          Our mobile app brings the full power of HealthTrack Pro to your pocket. Track nutrition, workouts, and body measurements with AI-powered insights wherever you are.
-        </p>
-        
-        <div style="margin-bottom: 2rem;">
-          <h4 style="color: var(--text-light); margin-bottom: 1rem; font-size: 1.3rem;">Key Features:</h4>
-          <ul style="list-style: none; color: var(--text-muted);">
-            <li style="margin-bottom: 0.8rem;"><i class="fas fa-check-circle" style="color: var(--primary);"></i> On-device AI body scanning</li>
-            <li style="margin-bottom: 0.8rem;"><i class="fas fa-check-circle" style="color: var(--primary);"></i> Real-time workout tracking</li>
-            <li style="margin-bottom: 0.8rem;"><i class="fas fa-check-circle" style="color: var(--primary);"></i> Nutrition barcode scanner</li>
-            <li style="margin-bottom: 0.8rem;"><i class="fas fa-check-circle" style="color: var(--primary);"></i> Health dashboard with insights</li>
-            <li style="margin-bottom: 0.8rem;"><i class="fas fa-check-circle" style="color: var(--primary);"></i> Sync with wearable devices</li>
-          </ul>
-        </div>
-        
-        <div class="app-stores">
-          <a href="#" class="app-store-btn">
-            <i class="fab fa-apple" style="font-size: 1.5rem;"></i>
-            <div>
-              <div style="font-size: 0.7rem;">Download on the</div>
-              <div style="font-weight: 600;">App Store</div>
-            </div>
-          </a>
-          
-          <a href="#" class="app-store-btn">
-            <i class="fab fa-google-play" style="font-size: 1.5rem;"></i>
-            <div>
-              <div style="font-size: 0.7rem;">GET IT ON</div>
-              <div style="font-weight: 600;">Google Play</div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="feature-section">
+<div class="section-title"><i class="fas fa-desktop"></i> Access Anywhere, On Any Device</div>
+<p class="section-subtitle">Our platform is fully responsive. Get a seamless experience on your desktop, tablet, or mobile browser without needing to download an app.</p>
+<div class="dashboard-section">
+<div class="dashboard-image"><div style="position: relative; z-index: 2; text-align: center; padding: 2rem; color: white;"><h3 style="font-size: 2rem; margin-bottom: 1rem;">Your Unified Dashboard</h3><p style="margin-bottom: 2rem; max-width: 400px;">Scan, track, and analyze your health anytime, anywhere, directly from your browser.</p><div style="font-size: 3rem; margin-bottom: 1.5rem;"><i class="fas fa-sync-alt fa-spin"></i></div><p>Real-time data sync across all your devices.</p></div></div>
+<div class="dashboard-content">
+<h3 style="font-size: 2rem; margin-bottom: 1.5rem; color: var(--text-light);">No Downloads, All Features</h3>
+<p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1.1rem;">HealthTrack Pro brings its full power to the web. Track nutrition, workouts, and body measurements with AI-powered insights wherever you are.</p>
+<div style="margin-bottom: 2rem;">
+<h4 style="color: var(--text-light); margin-bottom: 1rem; font-size: 1.3rem;">Key Web Features:</h4>
+<ul style="list-style: none; color: var(--text-muted);">
+<li style="margin-bottom: 0.8rem;"><i class="fas fa-check-circle" style="color: var(--primary);"></i> In-browser AI body scanning</li>
+<li style="margin-bottom: 0.8rem;"><i class="fas fa-check-circle" style="color: var(--primary);"></i> Real-time workout tracking</li>
+<li style="margin-bottom: 0.8rem;"><i class="fas fa-check-circle" style="color: var(--primary);"></i> Visual Meal Scanner via camera</li>
+<li style="margin-bottom: 0.8rem;"><i class="fas fa-check-circle" style="color: var(--primary);"></i> Interactive health dashboard</li>
+<li style="margin-bottom: 0.8rem;"><i class="fas fa-check-circle" style="color: var(--primary);"></i> Sync with wearable devices</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</main>
 
-  <!-- Authorization Page (Shown when clicking Login) -->
-  <div id="authorise" class="auth-container">
-    <div class="auth-header">
-      <h1>Welcome to HealthTrack Pro</h1>
-      <p>Select your role to continue to your personalized dashboard</p>
-    </div>
-    
-    <div class="auth-cards">
-      <!-- User Login -->
-      <div class="auth-card user">
-        <div class="auth-icon">
-          <i class="fas fa-user"></i>
-        </div>
-        <h3>User Login</h3>
-        <p>Track your health metrics, view personalized recommendations, and monitor your progress.</p>
-        
-        <form class="auth-form">
-          <div class="form-group">
-            <label for="user-email">Email</label>
-            <input type="email" id="user-email" placeholder="your.email@example.com">
-          </div>
-          
-          <div class="form-group">
-            <label for="user-password">Password</label>
-            <input type="password" id="user-password" placeholder="Enter your password">
-          </div>
-          
-          <div class="remember-forgot">
-            <label>
-              <input type="checkbox"> Remember me
-            </label>
-            <a href="#">Forgot password?</a>
-          </div>
-          
-          <button type="submit" class="btn">Login as User</button>
-        </form>
-      </div>
-      
-      <!-- Trainer Login -->
-      <div class="auth-card trainer">
-        <div class="auth-icon">
-          <i class="fas fa-dumbbell"></i>
-        </div>
-        <h3>Trainer Login</h3>
-        <p>Manage clients, create workout plans, and monitor client progress and achievements.</p>
-        
-        <form class="auth-form">
-          <div class="form-group">
-            <label for="trainer-email">Email</label>
-            <input type="email" id="trainer-email" placeholder="your.email@example.com">
-          </div>
-          
-          <div class="form-group">
-            <label for="trainer-password">Password</label>
-            <input type="password" id="trainer-password" placeholder="Enter your password">
-          </div>
-          
-          <div class="remember-forgot">
-            <label>
-              <input type="checkbox"> Remember me
-            </label>
-            <a href="#">Forgot password?</a>
-          </div>
-          
-          <button type="submit" class="btn btn-secondary">Login as Trainer</button>
-        </form>
-      </div>
-      
-      <!-- Owner Login -->
-      <div class="auth-card owner">
-        <div class="auth-icon">
-          <i class="fas fa-chart-line"></i>
-        </div>
-        <h3>Owner Login</h3>
-        <p>Access business analytics, manage subscriptions, and oversee platform operations.</p>
-        
-        <form class="auth-form">
-          <div class="form-group">
-            <label for="owner-email">Email</label>
-            <input type="email" id="owner-email" placeholder="your.email@example.com">
-          </div>
-          
-          <div class="form-group">
-            <label for="owner-password">Password</label>
-            <input type="password" id="owner-password" placeholder="Enter your password">
-          </div>
-          
-          <div class="remember-forgot">
-            <label>
-              <input type="checkbox"> Remember me
-            </label>
-            <a href="#">Forgot password?</a>
-          </div>
-          
-          <button type="submit" class="btn btn-accent">Login as Owner</button>
-        </form>
-      </div>
-    </div>
-    
-    <div class="auth-footer">
-      <p>Don't have an account? <a href="#">Sign up here</a></p>
-    </div>
-  </div>
+<footer>
+<div class="footer-content">
+<div class="footer-about">
+<div class="footer-logo"><i class="fas fa-heartbeat"></i> HealthTrack Pro</div>
+<p>Advanced AI-powered health tracking for body analysis, nutrition, and fitness optimization.</p>
+<div class="social-links">
+<a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a>
+</div>
+</div>
+<div class="footer-links">
+<h3>Features</h3>
+<ul>
+<li><a href="#">AI Body Analysis</a></li>
+<li><a href="#nutrition">Nutrition Tracking</a></li>
+<li><a href="#nutrition">Visual Meal Scanner</a></li>
+<li><a href="#">Health Metrics</a></li><li><a href="#">Sleep Analysis</a></li><li><a href="#">Mental Wellness</a></li><li><a href="#">Web Dashboard</a></li>
+</ul>
+</div>
+<div class="footer-links">
+<h3>Resources</h3>
+<ul>
+<li><a href="#">Blog</a></li><li><a href="#">Health Guides</a></li><li><a href="#">Research</a></li><li><a href="#">FAQ</a></li><li><a href="#">Support</a></li>
+</ul>
+</div>
+<div class="footer-links">
+<h3>Company</h3>
+<ul>
+<li><a href="#">About Us</a></li><li><a href="#">Careers</a></li><li><a href="#">Contact</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="copyright"><p>&copy; 2025 HealthTrack Pro. All rights reserved. | AI for Better Health</p></div>
+</footer>
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-content">
-      <div class="footer-about">
-        <div class="footer-logo">
-          <i class="fas fa-heartbeat"></i>
-          HealthTrack Pro
-        </div>
-        <p>Advanced AI-powered health tracking for body analysis, nutrition, and fitness optimization.</p>
-        <div class="social-links">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        </div>
-      </div>
-      
-      <div class="footer-links">
-        <h3>Features</h3>
-        <ul>
-          <li><a href="#">AI Body Analysis</a></li>
-          <li><a href="#">Nutrition Tracking</a></li>
-          <li><a href="#">Sleep Analysis</a></li>
-          <li><a href="#">Mental Wellness</a></li>
-          <li><a href="#">Mobile App</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-links">
-        <h3>Resources</h3>
-        <ul>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Health Guides</a></li>
-          <li><a href="#">Research</a></li>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Support</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-links">
-        <h3>Company</h3>
-        <ul>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
-        </ul>
-      </div>
-    </div>
-    
-    <div class="copyright">
-      <p>&copy; 2025 HealthTrack Pro. All rights reserved. | AI for Better Health</p>
-    </div>
-  </footer>
+<div id="role-choice-modal" class="modal-overlay">
+<div class="modal-content">
+<button class="close-button">&times;</button>
+<div class="role-choice-header">
+<h1>Welcome Back!</h1>
+<p>Please select your role to sign in.</p>
+</div>
+<div class="role-choice-buttons">
+<button class="btn" data-role="user"><i class="fas fa-user"></i>Login as User</button>
+<button class="btn btn-secondary" data-role="trainer"><i class="fas fa-dumbbell"></i>Login as Trainer</button>
+<button class="btn btn-accent" data-role="owner"><i class="fas fa-chart-line"></i>Login as Owner</button>
+</div>
+</div>
+</div>
 
-  <script>
-    // Simple animation for pricing cards
-    document.addEventListener('DOMContentLoaded', function() {
-      const pricingCards = document.querySelectorAll('.pricing-card');
-      
-      pricingCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-          if (!card.classList.contains('popular')) {
-            card.style.transform = 'translateY(-10px)';
-            card.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.4)';
-          }
-        });
-        
-        card.addEventListener('mouseleave', () => {
-          if (!card.classList.contains('popular')) {
-            card.style.transform = 'translateY(0)';
-            card.style.boxShadow = '';
-          }
-        });
-      });
-      
-      // Animate stats on scroll
-      const observer = new IntersectionObserver((entries) => {
+
+<div id="login-modal" class="modal-overlay">
+<div class="modal-content">
+<button class="back-button"><i class="fas fa-arrow-left"></i></button>
+<button class="close-button">&times;</button>
+<div class="auth-container">
+<div class="auth-card user">
+<div class="auth-icon"><i class="fas fa-user"></i></div>
+<h3>User Login</h3>
+<form class="auth-form">
+<div class="form-group"><label for="user-email">Email</label><input type="email" id="user-email" placeholder="your.email@example.com"></div>
+<div class="form-group"><label for="user-password">Password</label><input type="password" id="user-password" placeholder="Enter your password"></div>
+<div class="remember-forgot"><label><input type="checkbox"> Remember me</label><a href="#">Forgot password?</a></div>
+<button type="submit" class="btn">Login</button>
+</form>
+<div class="auth-footer"><p>Don't have an account? <a href="#">Sign up here</a></p></div>
+</div>
+
+<div class="auth-card trainer">
+<div class="auth-icon"><i class="fas fa-dumbbell"></i></div>
+<h3>Trainer Login</h3>
+<form class="auth-form">
+<div class="form-group"><label for="trainer-email">Email</label><input type="email" id="trainer-email" placeholder="your.email@example.com"></div>
+<div class="form-group"><label for="trainer-password">Password</label><input type="password" id="trainer-password" placeholder="Enter your password"></div>
+<div class="remember-forgot"><label><input type="checkbox"> Remember me</label><a href="#">Forgot password?</a></div>
+<button type="submit" class="btn btn-secondary">Login</button>
+</form>
+<div class="auth-footer"><p>Need a trainer account? <a href="#">Apply here</a></p></div>
+</div>
+
+<div class="auth-card owner">
+<div class="auth-icon"><i class="fas fa-chart-line"></i></div>
+<h3>Owner Login</h3>
+<form class="auth-form">
+<div class="form-group"><label for="owner-email">Email</label><input type="email" id="owner-email" placeholder="your.email@example.com"></div>
+<div class="form-group"><label for="owner-password">Password</label><input type="password" id="owner-password" placeholder="Enter your password"></div>
+<div class="remember-forgot"><label><input type="checkbox"> Remember me</label><a href="#">Forgot password?</a></div>
+<button type="submit" class="btn btn-accent">Login</button>
+</form>
+<div class="auth-footer"><p>Accessing business dashboard.</p></div>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Animate sections on scroll
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('visible');
+}
+});
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.feature-section').forEach(section => {
+observer.observe(section);
+});
+    
+      // Animate hero stats
+    const heroObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
+            if (entry.isIntersecting) {
+                document.querySelectorAll('.stat-card').forEach((card, index) => {
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, index * 200);
+                });
+                heroObserver.unobserve(entry.target);
+            }
         });
-      }, { threshold: 0.1 });
-      
-      // Observe all feature sections
-      document.querySelectorAll('.feature-section').forEach(section => {
-        observer.observe(section);
-      });
-      
-      // Navigation smooth scrolling
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          
-          const targetId = this.getAttribute('href');
-          if(targetId === '#') return;
-          
-          const targetElement = document.querySelector(targetId);
-          if(targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop - 100,
-              behavior: 'smooth'
-            });
-          }
-        });
-      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.stat-card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
     });
-  </script>
+    heroObserver.observe(document.querySelector('.hero'));
+
+// Navigation smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function(e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+if(targetId === '#') return;
+const targetElement = document.querySelector(targetId);
+if(targetElement) {
+window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });
+}
+});
+});
+
+// TWO-STEP MODAL LOGIC
+const loginBtn = document.getElementById('login-btn');
+const roleChoiceModal = document.getElementById('role-choice-modal');
+const loginModal = document.getElementById('login-modal');
+const loginModalContent = loginModal.querySelector('.modal-content');
+const backButton = loginModal.querySelector('.back-button');
+
+// Function to open a modal
+const openModal = (modal) => modal.classList.add('visible');
+// Function to close a modal
+const closeModal = (modal) => modal.classList.remove('visible');
+
+// 1. Open the first modal (role choice)
+loginBtn.addEventListener('click', () => openModal(roleChoiceModal));
+
+// 2. Handle role selection
+roleChoiceModal.querySelectorAll('[data-role]').forEach(button => {
+button.addEventListener('click', () => {
+const role = button.dataset.role;
+loginModalContent.dataset.show = role;
+closeModal(roleChoiceModal);
+openModal(loginModal);
+});
+});
+
+// 3. Handle the "Back" button
+backButton.addEventListener('click', () => {
+closeModal(loginModal);
+openModal(roleChoiceModal);
+});
+
+// 4. Handle closing modals (clicking X or overlay)
+document.querySelectorAll('.modal-overlay').forEach(modal => {
+modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(modal); });
+modal.querySelectorAll('.close-button').forEach(btn => btn.addEventListener('click', () => closeModal(modal)));
+});
+
+
+// NEW: NUTRITION TAB SWITCHER LOGIC
+const switcherButtons = document.querySelectorAll('.switcher-btn');
+const featurePanels = document.querySelectorAll('.nutrition-features-panel');
+const visualPanels = document.querySelectorAll('.nutrition-visual-panel');
+
+switcherButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const tab = button.dataset.tab;
+
+        // Update button active state
+        switcherButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        // Update feature panel visibility
+        featurePanels.forEach(panel => {
+            if (panel.dataset.panel === tab) {
+                panel.classList.add('active');
+            } else {
+                panel.classList.remove('active');
+            }
+        });
+
+        // Update visual panel visibility
+        visualPanels.forEach(panel => {
+            if (panel.dataset.visual === tab) {
+                panel.classList.add('active');
+            } else {
+                panel.classList.remove('active');
+            }
+        });
+    });
+});
+
+});
+</script>
 </body>
 </html>
