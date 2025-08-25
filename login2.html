@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PremiumFit | Secure Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --dark: #1e293b;
+            --darker: #0f172a;
+            --light: #f8fafc;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: rgba(148, 163, 184, 0.2);
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--darker), #1e293b, #0f172a);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Animated background elements */
+        .bg-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .bg-circle-1 {
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            top: -200px;
+            right: -200px;
+        }
+
+        .bg-circle-2 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, var(--secondary), #0ea5e9);
+            bottom: -150px;
+            left: -150px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--card-border);
+            display: flex;
+            min-height: 600px;
+        }
+
+        .info-section {
+            flex: 1;
+            background: linear-gradient(135deg, var(--primary-dark), var(--darker));
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            z-index: 1;
+        }
+
+        .logo-icon {
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .logo h1 {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(to right, #f9fafb, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .info-content {
+            z-index: 1;
+            position: relative;
+        }
+
+        .info-content h2 {
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #f9fafb, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .info-content p {
+            color: #cbd5e1;
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 500px;
+            margin-bottom: 30px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .feature-icon {
+            background: rgba(255, 255, 255, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: var(--accent);
+        }
+
+        .feature-text h3 {
+            color: #f1f5f9;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .feature-text p {
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        .login-section {
+            flex: 1;
+            padding: 50px;
+            background: var(--darker);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .role-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 15px;
+        }
+
+        .role-tab {
+            padding: 12px 25px;
+            background: transparent;
+            border: none;
+            font-size: 18px;
+            font-weight: 600;
+            color: #94a3b8;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .role-tab.active {
+            color: #f1f5f9;
+            background: rgba(99, 102, 241, 0.2);
+        }
+
+        .role-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .role-tab i {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        .login-form {
+            display: none;
+        }
+
+        .login-form.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-header {
+            margin-bottom: 30px;
+        }
+
+        .form-header h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #f1f5f9;
+            margin-bottom: 10px;
+        }
+
+        .form-header p {
+            color: #94a3b8;
+            font-size: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #cbd5e1;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 16px 20px;
+            padding-left: 50px;
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            color: #f1f5f9;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+
+        .form-control::placeholder {
+            color: #94a3b8;
+        }
+
+        .form-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 18px;
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        .remember-me input {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--primary);
+        }
+
+        .forgot-password {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+            color: var(--accent);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: #94a3b8;
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .divider span {
+            padding: 0 15px;
+            font-size: 14px;
+        }
+
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid var(--card-border);
+            color: #cbd5e1;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 30px;
+            color: #94a3b8;
+            font-size: 15px;
+        }
+
+        .register-link a {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .register-link a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        /* Role-specific styling */
+        .user-role .form-header h2 {
+            color: #f0abfc;
+        }
+
+        .trainer-role .form-header h2 {
+            color: #93c5fd;
+        }
+
+        .owner-role .form-header h2 {
+            color: #fbcfe8;
+        }
+
+        .user-role .btn-primary {
+            background: linear-gradient(135deg, #ec4899, #8b5cf6);
+        }
+
+        .trainer-role .btn-primary {
+            background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+        }
+
+        .owner-role .btn-primary {
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+        }
+
+        .role-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(156, 163, 175, 0.15);
+            color: #cbd5e1;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .user-badge {
+            background: rgba(236, 72, 153, 0.15);
+            color: #f0abfc;
+        }
+
+        .trainer-badge {
+            background: rgba(14, 165, 233, 0.15);
+            color: #93c5fd;
+        }
+
+        .owner-badge {
+            background: rgba(245, 158, 11, 0.15);
+            color: #fcd34d;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                max-width: 500px;
+            }
+            
+            .info-section {
+                padding: 30px;
+            }
+            
+            .info-content h2 {
+                font-size: 32px;
+            }
+            
+            .login-section {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated background elements -->
+    <div class="bg-shape bg-circle-1"></div>
+    <div class="bg-shape bg-circle-2"></div>
+    
+    <div class="container">
+        <div class="info-section">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-dumbbell"></i>
+                </div>
+                <h1>PremiumFit</h1>
+            </div>
+            
+            <div class="info-content">
+                <h2>Where Excellence Meets Fitness</h2>
+                <p>Access your personalized dashboard with advanced analytics, training plans, and community features. Secure, intuitive, and designed for peak performance.</p>
+                
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h3>Bank-Level Security</h3>
+                            <p>Enterprise-grade encryption for all user data</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h3>Advanced Analytics</h3>
+                            <p>Track progress with detailed performance metrics</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h3>Community Hub</h3>
+                            <p>Connect with trainers and fellow fitness enthusiasts</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h3>Seamless Experience</h3>
+                            <p>Access your account from any device, anywhere</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="login-section">
+            <div class="role-tabs">
+                <button class="role-tab active" data-role="user">
+                    <i class="fas fa-user"></i> User
+                </button>
+                <button class="role-tab" data-role="trainer">
+                    <i class="fas fa-chalkboard-teacher"></i> Trainer
+                </button>
+                <button class="role-tab" data-role="owner">
+                    <i class="fas fa-crown"></i> Owner
+                </button>
+            </div>
+            
+            <!-- User Login Form -->
+            <form class="login-form user-role active" id="user-login">
+                <div class="form-header">
+                    <h2>Welcome Back, Member</h2>
+                    <p>Sign in to continue your fitness journey</p>
+                    <div class="role-badge user-badge">
+                        <i class="fas fa-user-circle"></i> Member Account
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="user-email">Email Address</label>
+                    <div class="input-group">
+                        <i class="fas fa-envelope form-icon"></i>
+                        <input type="email" id="user-email" class="form-control" placeholder="your@email.com" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="user-password">Password</label>
+                    <div class="input-group">
+                        <i class="fas fa-lock form-icon"></i>
+                        <input type="password" id="user-password" class="form-control" placeholder="••••••••" required>
+                    </div>
+                </div>
+                
+                <div class="remember-forgot">
+                    <div class="remember-me">
+                        <input type="checkbox" id="user-remember">
+                        <label for="user-remember">Remember me</label>
+                    </div>
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Sign In to Dashboard</button>
+                
+                <div class="divider">
+                    <span>or continue with</span>
+                </div>
+                
+                <div class="social-login">
+                    <a href="#" class="social-btn">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="#" class="social-btn">
+                        <i class="fab fa-apple"></i>
+                    </a>
+                    <a href="#" class="social-btn">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </div>
+                
+                <div class="register-link">
+                    Don't have an account? <a href="#">Create one now</a>
+                </div>
+            </form>
+            
+            <!-- Trainer Login Form -->
+            <form class="login-form trainer-role" id="trainer-login">
+                <div class="form-header">
+                    <h2>Trainer Portal Access</h2>
+                    <p>Sign in to manage your clients and schedule</p>
+                    <div class="role-badge trainer-badge">
+                        <i class="fas fa-chalkboard-teacher"></i> Certified Trainer
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="trainer-email">Professional Email</label>
+                    <div class="input-group">
+                        <i class="fas fa-envelope form-icon"></i>
+                        <input type="email" id="trainer-email" class="form-control" placeholder="professional@domain.com" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="trainer-password">Password</label>
+                    <div class="input-group">
+                        <i class="fas fa-lock form-icon"></i>
+                        <input type="password" id="trainer-password" class="form-control" placeholder="••••••••" required>
+                    </div>
+                </div>
+                
+                <div class="remember-forgot">
+                    <div class="remember-me">
+                        <input type="checkbox" id="trainer-remember">
+                        <label for="trainer-remember">Remember this device</label>
+                    </div>
+                    <a href="#" class="forgot-password">Reset credentials</a>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Access Trainer Dashboard</button>
+                
+                <div class="divider">
+                    <span>or sign in with</span>
+                </div>
+                
+                <div class="social-login">
+                    <a href="#" class="social-btn">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="#" class="social-btn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+                
+                <div class="register-link">
+                    Need trainer access? <a href="#">Apply for certification</a>
+                </div>
+            </form>
+            
+            <!-- Owner Login Form -->
+            <form class="login-form owner-role" id="owner-login">
+                <div class="form-header">
+                    <h2>Executive Management</h2>
+                    <p>Secure access to business analytics and controls</p>
+                    <div class="role-badge owner-badge">
+                        <i class="fas fa-crown"></i> Premium Account
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="owner-email">Corporate Email</label>
+                    <div class="input-group">
+                        <i class="fas fa-envelope form-icon"></i>
+                        <input type="email" id="owner-email" class="form-control" placeholder="executive@premiumfit.com" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="owner-password">Security Key</label>
+                    <div class="input-group">
+                        <i class="fas fa-shield-alt form-icon"></i>
+                        <input type="password" id="owner-password" class="form-control" placeholder="••••••••" required>
+                    </div>
+                </div>
+                
+                <div class="remember-forgot">
+                    <div class="remember-me">
+                        <input type="checkbox" id="owner-remember">
+                        <label for="owner-remember">Trust this device</label>
+                    </div>
+                    <a href="#" class="forgot-password">Security protocols</a>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Enter Executive Suite</button>
+                
+                <div class="divider">
+                    <span>authentication methods</span>
+                </div>
+                
+                <div class="social-login">
+                    <a href="#" class="social-btn">
+                        <i class="fas fa-fingerprint"></i>
+                    </a>
+                    <a href="#" class="social-btn">
+                        <i class="fas fa-key"></i>
+                    </a>
+                    <a href="#" class="social-btn">
+                        <i class="fas fa-id-card"></i>
+                    </a>
+                </div>
+                
+                <div class="register-link">
+                    Authorized personnel only | <a href="#">Security guidelines</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const roleTabs = document.querySelectorAll('.role-tab');
+            const loginForms = document.querySelectorAll('.login-form');
+            
+            roleTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs and forms
+                    roleTabs.forEach(t => t.classList.remove('active'));
+                    loginForms.forEach(form => form.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    
+                    // Show corresponding form
+                    const role = tab.getAttribute('data-role');
+                    document.querySelector(`.${role}-role`).classList.add('active');
+                });
+            });
+            
+            // Form submission handling (prevent actual submission for demo)
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const role = this.className.split(' ')[1];
+                    let message = '';
+                    
+                    if(role === 'user-role') {
+                        message = 'User login successful!';
+                    } else if(role === 'trainer-role') {
+                        message = 'Trainer portal access granted!';
+                    } else {
+                        message = 'Executive dashboard loading...';
+                    }
+                    
+                    alert(message);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
