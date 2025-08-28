@@ -1242,7 +1242,7 @@ HealthTrack Pro
 <div class="form-group"><label for="trainer-email">Email</label><input type="email" id="trainer-email" placeholder="your.email@example.com"></div>
 <div class="form-group"><label for="trainer-password">Password</label><input type="password" id="trainer-password" placeholder="Enter your password"></div>
 <div class="remember-forgot"><label><input type="checkbox"> Remember me</label><a href="#">Forgot password?</a></div>
-<button type="submit" class="btn btn-secondary">Login</button>
+<a href="Trainer.html" class="btn btn-secondary">Login</a>
 </form>
 <div class="auth-footer"><p>Need a trainer account? <a href="#">Apply here</a></p></div>
 </div>
@@ -1347,8 +1347,6 @@ document.querySelectorAll('.modal-overlay').forEach(modal => {
 modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(modal); });
 modal.querySelectorAll('.close-button').forEach(btn => btn.addEventListener('click', () => closeModal(modal)));
 });
-
-
 // NEW: NUTRITION TAB SWITCHER LOGIC
 const switcherButtons = document.querySelectorAll('.switcher-btn');
 const featurePanels = document.querySelectorAll('.nutrition-features-panel');
