@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<head>
+  <title>HealthTrack</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header>
+
+    <div class="logo">
+      <img src="Screenshot 2025-08-30 121152.png" alt="Workout">
+      HealthTrack
+    </div>
+    <nav>
+      <a href="#">Dashboard</a>
+      <a href="#ai">AI Analysis</a>
+      <a href="#nutrition">Nutrition</a>
+      <a href="#sleep">Sleep</a>
+      <a href="#anywhere">Access</a>
+      <a href="#subscription">Subscription</a>
+    </nav>
+    <a id="loginBtn">
+
+      <button class="login-btn">Login</button>
+    </a>
+  </header>
+
+   <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Choose Login</h2>
+      <button onclick="window.location.href='signin_owner.html'">Owner</button>
+      <button onclick="window.location.href='signin_trainer.html'">Trainer</button>
+      <button onclick="window.location.href='signin.html'">User</button>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>AI-Powered Health & Fitness Tracking</h1>
+    <p>Advanced body analysis, personalized recommendations, and a responsive dashboard for your wellness journey.</p>
+    <div class="stats">
+      <div class="stat-box">
+        <h2>98%</h2>
+        <p>Accuracy Rate</p>
+      </div>
+      <div class="stat-box">
+        <h2>50K+</h2>
+        <p>Active Users</p>
+      </div>
+      <div class="stat-box">
+        <h2>24/7</h2>
+        <p>AI Monitoring</p>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Body Analysis -->
+  <section class="container" id="ai">
+    <div class="left">
+      <h2>Comprehensive Body Scan Technology</h2>
+      <p>Using state-of-the-art computer vision, our AI analyzes your body composition, posture, and movement patterns
+        to deliver actionable insights.</p>
+      <div class="features">
+        <div class="feature-box">
+          <h3>📊 Body Composition</h3>
+          <p>Measure body fat, muscle mass, and more.</p>
+        </div>
+        <div class="feature-box">
+          <h3>🧍 Posture Analysis</h3>
+          <p>Detect imbalances and corrective exercises.</p>
+        </div>
+        <div class="feature-box">
+          <h3>🍏 Nutrition Guidance</h3>
+          <p>Personalized meal plans.</p>
+        </div>
+        <div class="feature-box">
+          <h3>🏋️ Workout Plans</h3>
+          <p>Custom routines tailored to your goals.</p>
+        </div>
+      </div>
+      <button class="run-btn">🔄 Run Body Analysis</button>
+    </div>
+    <div class="right">
+      <img
+        src="https://img.freepik.com/premium-vector/futuristic-medical-symbols-scan-web-interface-visualization-digital-human-verify_80590-3635.jpg?semt=ais_hybrid&w=740&q=80"
+        alt="Workout">
+    </div>
+  </section>
+
+
+  <!-- Nutrition -->
+  <section class="nutrition-section" id="nutrition">
+    <div class="left">
+      <h2>Two Powerful Ways to Track</h2>
+      <p>Choose the method that fits your lifestyle for the most accurate and effortless tracking.</p>
+      <div class="tabs">
+        <div class="tab active">🍽 Log & Track</div>
+      </div>
+      <div class="features">
+        <div class="feature-box">
+          <h3>📊 Barcode Scanning</h3>
+          <p>Instantly log packaged foods.</p>
+        </div>
+        <div class="feature-box">
+          <h3>🥗 Macro Tracking</h3>
+          <p>Monitor carbs, protein, and fat.</p>
+        </div>
+        <div class="feature-box">
+          <h3>💡 AI Suggestions</h3>
+          <p>Smart meal recommendations.</p>
+        </div>
+        <div class="feature-box">
+          <h3>💧 Hydration Tracker</h3>
+          <p>Log and monitor water intake.</p>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <h3>Your Nutrition Dashboard</h3>
+      <p>Visualize your daily intake and get AI-powered insights.</p>
+    </div>
+  </section>
+
+
+
+  <!-- Sleep Analysis -->
+  <section class="heroo" id="sleep">
+    <div class="container">
+      <h1>🌙 Advanced Sleep Analysis</h1>
+      <p>Understand your sleep patterns and get personalized recommendations for better rest and recovery.</p>
+      <div class="features">
+        <div class="card">
+          <div class="icon">🛏️</div>
+          <h3>Sleep Duration Tracking</h3>
+          <p>Monitor how long you sleep each night with precision timing.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🧠</div>
+          <h3>Sleep Quality Analysis</h3>
+          <p>Measure sleep stages and quality using AI algorithms.</p>
+        </div>
+        <div class="card">
+          <div class="icon">☁️</div>
+          <h3>Smart Wake-up</h3>
+          <p>Wake up at the optimal time in your sleep cycle.</p>
+        </div>
+      </div>
+      <a href="#" class="btn">📄 View Sleep Reports</a>
+    </div>
+  </section>
+
+  <!-- Anywhere access -->
+  <section class="access" id="anywhere">
+    <div class="container">
+      <h2>💻 Access Anywhere, On Any Device</h2>
+      <p>Our platform is fully responsive. Get a seamless experience on your desktop, tablet, or mobile browser without
+        needing to download an app.</p>
+      <div class="access-content">
+        <div class="access-left">
+          <h3>Your Unified Dashboard</h3>
+          <p>Scan, track, and analyze your health anytime, anywhere, directly from your browser.</p>
+          <p><small>Real-time data sync across all your devices.</small></p>
+        </div>
+        <div class="access-right">
+          <h3>No Downloads, All Features</h3>
+          <p>HealthTrack Pro brings its full power to the web. Track nutrition, workouts, and body measurements with
+            AI-powered insights wherever you are.</p>
+          <h4>Key Web Features:</h4>
+          <ul>
+            <li>In-browser AI body scanning</li>
+            <li>Real-time workout tracking</li>
+            <li>Visual Meal Scanner via camera</li>
+            <li>Interactive health dashboard</li>
+            <li>Sync with wearable devices</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Subscription -->
+  <section class="pricing" id="subscription">
+    <div class="container">
+      <h2>👑 Premium Subscription</h2>
+      <!-- <p>Unlock advanced features with our premium plans. All include AI analysis and seamless dashboard access.</p> -->
+      <div class="plans">
+        <div class="plan">
+          <h3>Basic</h3>
+          <div class="price">$9<span>/month</span></div>
+          <ul>
+            <li>Basic AI Analysis</li>
+            <li>5 Body Scans/Month</li>
+            <li>Web Dashboard Access</li>
+            <li class="unavailable">Advanced Metrics</li>
+            <li class="unavailable">Personal Trainer</li>
+          </ul>
+          <button>Get Started</button>
+        </div>
+        <div class="plan popular">
+          <h3>Pro</h3>
+          <div class="price">$19<span>/month</span></div>
+          <ul>
+            <li>Advanced AI Analysis</li>
+            <li>Unlimited Body Scans</li>
+            <li>Web Dashboard Premium</li>
+            <li>All Health Metrics</li>
+            <li>Personal Trainer Access</li>
+            <li>Nutrition & Sleep Tracking</li>
+          </ul>
+          <button>Get Started</button>
+        </div>
+        <div class="plan">
+          <h3>Business</h3>
+          <div class="price">$49<span>/month</span></div>
+          <ul>
+            <li>Enterprise AI Analysis</li>
+            <li>Team Management</li>
+            <li>Multi-User Access</li>
+            <li>Dedicated Support</li>
+            <li>Custom Integrations</li>
+            <li>Mental Wellness Tools</li>
+          </ul>
+          <button>Get Started</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-logo">
+        <h2><i class="fa-solid fa-heart-pulse"></i> HealthTrack Pro</h2>
+        <p>Advanced AI-powered health tracking for body analysis, nutrition, and fitness optimization.</p>
+        <div class="socials">
+          <a href="#"><i class="fab fa-facebook-f">
+              <img src="Screenshot 2025-08-30 121152.png" alt="Workout">
+
+            </i></a>
+          <a href="#"><i class="fab fa-twitter">
+              <img src="Screenshot 2025-08-30 121152.png" alt="Workout">
+            </i></a>
+          <a href="#"><i class="fab fa-instagram">
+              <img src="Screenshot 2025-08-30 121152.png" alt="Workout">
+            </i></a>
+          <a href="#"><i class="fab fa-linkedin-in">
+              <img src="Screenshot 2025-08-30 121152.png" alt="Workout">
+            </i></a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>Features</h3>
+        <ul>
+          <li><a href="#">AI Body Analysis</a></li>
+          <li><a href="#">Nutrition Tracking</a></li>
+          <li><a href="#">Sleep Analysis</a></li>
+          <li><a href="#">Web Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Health Guides</a></li>
+          <li><a href="#">Research</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 HealthTrack Pro. All rights reserved. | AI for Better Health</div>
+  </footer>
+
+  <script src="index.js"></script>
+
+
+
+
+
+</body>
+
+</html>
