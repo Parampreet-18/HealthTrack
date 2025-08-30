@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Health Monitoring | Owner Dashboard</title>
+
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    :root {
+      --primary: #2a5298;
+      --primary-light: #3a6bc5;
+      --secondary: #6c63ff;
+      --success: #2ecc71;
+      --danger: #e74c3c;
+      --warning: #f39c12;
+      --dark: #1a1a2e;
+      --light: #f8f9fa;
+      --gray: #95a5a6;
+      --card-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      --border-radius: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      color: var(--dark);
+      min-height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 280px;
+      background: var(--primary);
+      color: white;
+      padding: 2rem 1rem;
+      position: fixed;
+      height: 100%;
+      box-shadow: 3px 0 10px rgba(0,0,0,0.1);
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo i {
+      color: var(--warning);
+    }
+
+    .nav-links {
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-bottom: 1rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 0.8rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-radius: var(--border-radius);
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      background: rgba(255,255,255,0.2);
+      font-weight: 500;
+    }
+
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      margin-left: 280px;
+      padding: 2rem;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .header h1 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .user-profile img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .greeting {
+      font-weight: 500;
+    }
+
+    /* Dashboard Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      color: var(--gray);
+      margin-bottom: 0.5rem;
+    }
+
+    .card .value {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .card .icon {
+      font-size: 2.5rem;
+      color: var(--primary-light);
+      float: right;
+    }
+
+    /* Table Section */
+    .section {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 2rem;
+    }
+
+    .section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead th {
+      text-align: left;
+      padding: 1rem;
+      background: #f1f3f9;
+      border-bottom: 2px solid #ddd;
+      font-weight: 500;
+      color: var(--dark);
+    }
+
+    tbody td {
+      padding: 1rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    .status {
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .status.active {
+      background: rgba(46, 204, 113, 0.15);
+      color: var(--success);
+    }
+
+    .status.inactive {
+      background: rgba(231, 76, 60, 0.15);
+      color: var(--danger);
+    }
+
+    .btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: var(--primary-light);
+    }
+
+    .btn-sm {
+      padding: 0.3rem 0.7rem;
+      font-size: 0.8rem;
+    }
+
+    .btn-danger {
+      background: var(--danger);
+    }
+
+    .btn-danger:hover {
+      background: #c0392b;
+    }
+
+    @media (max-width: 992px) {
+      .sidebar {
+        width: 220px;
+      }
+      .main-content {
+        margin-left: 220px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 80px;
+        padding: 1.5rem 0.5rem;
+      }
+      .logo span, .nav-links a span {
+        display: none;
+      }
+      .logo i {
+        font-size: 1.5rem;
+      }
+      .nav-links a i {
+        margin: 0 auto;
+        display: block;
+        text-align: center;
+        font-size: 1.2rem;
+      }
+      .main-content {
+        margin-left: 80px;
+      }
+      .header h1 {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <i class="fas fa-heartbeat"></i>
+        <span>Health Tracker</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#" class="active"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+        <li><a href="#"><i class="fas fa-user-shield"></i> <span>Trainers</span></a></li>
+        <li><a href="#"><i class="fas fa-users"></i> <span>Users</span></a></li>
+        <li><a href="#"><i class="fas fa-chart-line"></i> <span>Analytics</span></a></li>
+        <li><a href="#"><i class="fas fa-bell"></i> <span>Alerts</span></a></li>
+        <li><a href="#"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+        <li><a href="#"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <div class="header">
+        <h1>Welcome Back, Owner</h1>
+        <div class="user-profile">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Owner">
+          <span class="greeting">Dr. Alan Smith</span>
+        </div>
+      </div>
+
+      <!-- Dashboard Cards -->
+      <div class="cards">
+        <div class="card">
+          <h3>Total Trainers</h3>
+          <div class="value">24</div>
+          <i class="fas fa-user-shield icon"></i>
+        </div>
+        <div class="card">
+          <h3>Active Users</h3>
+          <div class="value">1,842</div>
+          <i class="fas fa-users icon"></i>
+        </div>
+        <div class="card">
+          <h3>Health Alerts</h3>
+          <div class="value">12</div>
+          <i class="fas fa-exclamation-triangle icon" style="color: var(--warning);"></i>
+        </div>
+        <div class="card">
+          <h3>System Uptime</h3>
+          <div class="value">99.8%</div>
+          <i class="fas fa-server icon" style="color: var(--success);"></i>
+        </div>
+      </div>
+
+      <!-- Trainer Management -->
+      <div class="section">
+        <h2><i class="fas fa-user-shield"></i> Trainer Management</h2>
+        <button class="btn"><i class="fas fa-plus"></i> Add New Trainer</button>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Specialty</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Emma Wilson</td>
+              <td>emma@healthguard.com</td>
+              <td>Fitness & Nutrition</td>
+              <td><span class="status active">Active</span></td>
+              <td>
+                <button class="btn btn-sm">Edit</button>
+                <button class="btn btn-sm btn-danger">Deactivate</button>
+              </td>
+            </tr>
+            <tr>
+              <td>James Lee</td>
+              <td>james@healthguard.com</td>
+              <td>Mental Wellness</td>
+              <td><span class="status active">Active</span></td>
+              <td>
+                <button class="btn btn-sm">Edit</button>
+                <button class="btn btn-sm btn-danger">Deactivate</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Sophia Chen</td>
+              <td>sophia@healthguard.com</td>
+              <td>Cardio & Recovery</td>
+              <td><span class="status inactive">Inactive</span></td>
+              <td>
+                <button class="btn btn-sm">Edit</button>
+                <button class="btn btn-sm">Activate</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Recent Health Alerts -->
+      <div class="section">
+        <h2><i class="fas fa-bell"></i> Recent Health Alerts</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Issue</th>
+              <th>Severity</th>
+              <th>Time</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Lisa M.</td>
+              <td>High Heart Rate</td>
+              <td><span class="status" style="background: #fdf2f2; color: #c0392b;">High</span></td>
+              <td>10 mins ago</td>
+              <td><button class="btn btn-sm">Review</button></td>
+            </tr>
+            <tr>
+              <td>Mark T.</td>
+              <td>Low Sleep Quality</td>
+              <td><span class="status" style="background: #fff8e1; color: #f39c12;">Medium</span></td>
+              <td>1 hour ago</td>
+              <td><button class="btn btn-sm">Review</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script>
+   
+    document.querySelector('.btn').addEventListener('click', () => {
+      alert('Add new trainer form would open here.');
+    });
+  </script>
+</body>
+</html>
