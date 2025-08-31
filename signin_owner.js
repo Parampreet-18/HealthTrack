@@ -1,26 +1,17 @@
 const container = document.getElementById('container');
 const registerBtn = document.getElementById('register');
-const toggleLoginBtn = document.getElementById('toggleLogin');
+const toggleLoginBtn = document.getElementById('toggleLogin'); // renamed
 const signInBtn = document.getElementById('signIn');
 
-// Toggle panels
 registerBtn.addEventListener('click', () => {
-  container.classList.add("active");
+    container.classList.add("active");
 });
 
 toggleLoginBtn.addEventListener('click', () => {
-  container.classList.remove("active");
+    container.classList.remove("active");
 });
 
-// Sign In validation + redirect
-signInBtn.addEventListener('click', () => {
-  const form = signInBtn.closest("form"); // get sign-in form
-
-  if (form.checkValidity()) {
-    // ✅ Valid → redirect
-    window.location.href = "user.html";
-  } else {
-    // ❌ Invalid → show errors
-    form.reportValidity();
-  }
+signInBtn.addEventListener('click', (e) => {
+    e.preventDefault(); // stops form from submitting
+    window.location.href = "owner.html"; // redirect to your specific page
 });
