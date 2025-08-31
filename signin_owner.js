@@ -1,15 +1,3 @@
-// 
-
-// Validate all forms before submit
-document.querySelectorAll("form").forEach(form => {
-  form.addEventListener("submit", function(event) {
-    if (!this.checkValidity()) {
-      event.preventDefault(); // stop submit
-      this.reportValidity();  // show validation messages
-    }
-  });
-});
-
 const container = document.getElementById('container');
 const registerBtn = document.getElementById('register');
 const toggleLoginBtn = document.getElementById('toggleLogin');
@@ -25,15 +13,14 @@ toggleLoginBtn.addEventListener('click', () => {
 });
 
 // Sign In validation + redirect
-signInBtn.addEventListener('click', (e) => {
+signInBtn.addEventListener('click', () => {
   const form = signInBtn.closest("form"); // get sign-in form
 
   if (form.checkValidity()) {
-    // ✅ Valid → go to user.html
-    window.location.href = "Trainer.html";
+    // ✅ Valid → redirect
+    window.location.href = "user.html";
   } else {
-    // ❌ Invalid → prevent redirect and show errors
-    e.preventDefault();
+    // ❌ Invalid → show errors
     form.reportValidity();
   }
 });
