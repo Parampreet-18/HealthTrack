@@ -39,5 +39,6 @@ toggleLoginBtn.addEventListener('click', () => {
 
 signInBtn.addEventListener('click', (e) => {
     e.preventDefault(); // stops form from submitting
-    window.location.href = "user.html"; // redirect to your specific page
+    window.location.href = "User.html"; // redirect to your specific page
 });
+
