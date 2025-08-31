@@ -355,7 +355,7 @@
       display: flex;
       justify-content: center;
       gap: 30px;
-      margin-left: 5.5rem;
+/*       margin-left: 5.5rem; */
     }
 
     .plan {
@@ -578,4 +578,5 @@
     @keyframes slideDown {
       from {transform: translateY(-30px); opacity: 0;}
       to {transform: translateY(0); opacity: 1;}
+
     }
