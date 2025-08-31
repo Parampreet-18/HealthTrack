@@ -342,20 +342,20 @@
 
     .pricing h2 {
       color: #4caf50;
-/*       margin-bottom: 15px; */
+      /* margin-bottom: 105px; */
       font-size: 2.5em;
     }
 
     .pricing p {
-/*       margin-bottom: 50px; */
+      /* margin-bottom: 500px; */
       color: #ccc;
     }
 
     .plans {
       display: flex;
       justify-content: center;
-      gap: 30px;
-/*       margin-left: 5.5rem; */
+      /* gap: 30px; */
+      /* margin-left: 5.5rem; */
     }
 
     .plan {
@@ -578,6 +578,4 @@
     @keyframes slideDown {
       from {transform: translateY(-30px); opacity: 0;}
       to {transform: translateY(0); opacity: 1;}
-
     }
-
